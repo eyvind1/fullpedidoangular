@@ -10,11 +10,11 @@ export class FirebaseService {
     private firestore: AngularFirestore
   ) { }
 
-  getEmpresas(){
+  /* getEmpresas(){
     return this.firestore.collection("Gmtc_empresa").snapshotChanges();
   }
 
   getImagenes(){
     return this.firestore.collection("Gmtc_empresa").snapshotChanges();
-  }
+  } */
 }
