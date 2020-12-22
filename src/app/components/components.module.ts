@@ -9,7 +9,10 @@ import { CarruselComponent } from './carrusel/carrusel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EmpresasComponent } from './empresas/empresas.component';
 import { EmpresaComponent } from './empresa/empresa.component';
-
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
 
 
 /* import { AngularFireModule } from '@angular/fire';
@@ -33,6 +36,10 @@ import { environment } from '../../environments/environment'; */
     CommonModule,
     RouterModule,
     NgbModule,
+    MatListModule,
+    MatIconModule,
+    MatDividerModule,
+    MatButtonModule,
     // AngularFireModule.initializeApp(environment.firebase)
   ]
 })

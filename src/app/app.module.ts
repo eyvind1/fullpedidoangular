@@ -12,6 +12,9 @@ import { AboutComponent } from './pages/about/about.component';
 import { CarruselComponent } from './components/carrusel/carrusel.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 
 @NgModule({
@@ -26,7 +29,9 @@ import { AngularFireModule } from '@angular/fire';
     AppRoutingModule,
     ComponentsModule,
     NgbModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    BrowserAnimationsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

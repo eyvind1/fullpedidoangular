@@ -1,0 +1,11 @@
+.imagen-grande{
+    width: 100%;
+    height: auto;
+}
+
+  
+.example-button-row {
+    display: inline-block;
+    font-size: 5px;
+    width: 200px;
+  }

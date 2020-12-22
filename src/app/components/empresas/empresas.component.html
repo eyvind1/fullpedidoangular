@@ -10,19 +10,49 @@
           </div>
           <ul class="list-group">
   
-            <li *ngFor="let item of collection.data; let i=index" class="list-group-item">
-              {{i+1}} &nbsp; {{item.ruc}} &nbsp; {{item.departamento}} &nbsp; {{item.emp_aprod}} &nbsp;
+            <!-- <li *ngFor="let item of collection.data; let i=index" class="list-group-item">  -->
+            <!-- <li *ngFor="let item of this.productos; let i=index" class="list-group-item"> -->
+              <!-- {{i+1}} &nbsp; {{item.ruc}} &nbsp; {{item.departamento}} &nbsp; {{item.emp_aprod[0].prod_ccod}} &nbsp;
               <button (click)="verEmpresa(i)" type="button" class="btn btn-primary btn-block">
                 ver más...
               </button> 
               
-            </li>
-  
-  
+            </li> --> 
+            <mat-list>
+              <mat-list-item *ngFor="let item of collection.data; let i = index">
+                
+                <img *ngIf="item.logo === ''; else imagenblock" matListAvatar src="../../../assets/images/invoice_logo.png" alt="">
+                <ng-template #imagenblock>
+                  <img matListAvatar src={{item.logo}} alt="">
+                </ng-template>
+                <h3 matLine> {{item.razon_social}} </h3>
+                <!-- <h3 matLine> {{item.nombre_comercial}} </h3> -->
+                <p matLine>
+                  <span> {{item.nombre_comercial}} </span> <br>
+                  <span *ngIf="item.categoria.cat_cdes !== undefined ; then thenBlock else categoriablock"> </span> <br>
+                    <ng-template #thenBlock>
+                      <span>{{item.categoria.cat_cdes}}</span>
+                    </ng-template>
+                    <ng-template #categoriablock>
+                      <span> Sin categoría  </span> <br>
+                    </ng-template> 
+                   <!-- <span class="demo-2"> -- {{item.departamento}} </span> <br> -->
+                  <ngb-rating [rate]="item.calificacion"></ngb-rating> 
+                </p>
+                <div class="example-button-row">
+                  <button (click)="verEmpresa(i)" type="button" class="btn btn-primary btn-block">
+                    Ver Productos
+                  </button> 
+                </div>
+              </mat-list-item>
+            </mat-list>
+            
           </ul>
+
+          
   
         </div>
-        <div class="col-md-6 d-flex">
+        <div class="col-md-6 d-flex container">
           <div class="row">
             <div class="col-12">
               <img class="imagen-grande" src="../../../assets/images/about.jpg" alt="">
