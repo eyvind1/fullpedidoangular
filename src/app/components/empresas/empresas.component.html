@@ -8,7 +8,7 @@
             <span class="subheading">Empresas Afiliadas</span>
             <h2 class="mb-4">Nosotros somos los mejores</h2>
           </div>
-          <ul class="list-group">
+          <!-- <ul class="list-group"> -->
   
             <!-- <li *ngFor="let item of collection.data; let i=index" class="list-group-item">  -->
             <!-- <li *ngFor="let item of this.productos; let i=index" class="list-group-item"> -->
@@ -18,7 +18,7 @@
               </button> 
               
             </li> --> 
-            <mat-list>
+            <!-- <mat-list>
               <mat-list-item *ngFor="let item of collection.data; let i = index">
                 
                 <img *ngIf="item.logo === ''; else imagenblock" matListAvatar src="../../../assets/images/invoice_logo.png" alt="">
@@ -26,7 +26,7 @@
                   <img matListAvatar src={{item.logo}} alt="">
                 </ng-template>
                 <h3 matLine> {{item.razon_social}} </h3>
-                <!-- <h3 matLine> {{item.nombre_comercial}} </h3> -->
+                
                 <p matLine>
                   <span> {{item.nombre_comercial}} </span> <br>
                   <span *ngIf="item.categoria.cat_cdes !== undefined ; then thenBlock else categoriablock"> </span> <br>
@@ -36,7 +36,7 @@
                     <ng-template #categoriablock>
                       <span> Sin categoría  </span> <br>
                     </ng-template> 
-                   <!-- <span class="demo-2"> -- {{item.departamento}} </span> <br> -->
+                   
                   <ngb-rating [rate]="item.calificacion"></ngb-rating> 
                 </p>
                 <div class="example-button-row">
@@ -45,11 +45,60 @@
                   </button> 
                 </div>
               </mat-list-item>
-            </mat-list>
+            </mat-list> -->
             
-          </ul>
+          <!-- </ul> -->
 
-          
+          <!-- <div class="cases-wrap d-md-flex align-items-center">
+            <div class="img" style="background-image: url(../../../assets/images/invoice_logo.png);"></div>
+            <div class="text pl-md-5">
+              <span class="cat">Strategy</span>
+              <h2>Business activities and care for the environment</h2>
+              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+              <p><a href="#" class="btn btn-primary">Read more</a></p>
+            </div>
+          </div> -->
+   
+          <div *ngFor="let item of collection.data; let i=index" fxLayout="row"  [style.margin-top]="'12px'" fxLayoutAlign="space-around center" >
+            <mat-card>
+              
+              <img *ngIf="item.logo === ''; else imagenblock" matListAvatar src="../../../assets/images/invoice_logo.png" alt="" width="60px">
+              <ng-template #imagenblock>
+                <img matListAvatar src={{item.logo}} alt="" width="60px">
+              </ng-template>
+            </mat-card>
+            
+            <mat-card >
+              <div class="mat-body-2"> {{item.razon_social}}</div>
+              <mat-list>
+                  <div matLine *ngIf="item.nombre_comercial !== '-'; else comercialblock">
+                    <div>{{item.nombre_comercial}}</div>  
+                    <ng-template #comercialblock>
+                      <div>Sin nombre comercial</div>
+                    </ng-template>
+                  </div>
+                  <!-- <div>{{item.nombre_comercial}}</div> -->
+                  <!-- <div *ngIf="item.categoria.cat_cdes !== undefined ; then thenBlock else categoriablock" matLine>
+                    <ng-template #thenBlock>
+                      {{item.categoria.cat_cdes}}
+                    </ng-template>
+                    <ng-template #categoriablock>
+                      Sin categoría
+                    </ng-template>  
+                        
+                  </div> -->
+                  <div>{{item.descripcion}}</div>
+                  <div matLine>
+                    <ngb-rating [rate]="item.calificacion"></ngb-rating> 
+                  </div>
+                  <div matLine>
+                    <button mat-button (click)="verEmpresa(i)">Ver Productos</button>   
+                  </div>
+              </mat-list>
+            </mat-card>
+          </div> 
+
+        
   
         </div>
         <div class="col-md-6 d-flex container">

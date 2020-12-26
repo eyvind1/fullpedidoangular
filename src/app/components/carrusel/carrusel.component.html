@@ -1,9 +1,9 @@
 <div class="container-fluid">
     <div class="row">
-      <ngb-carousel *ngIf="images">
-        <ng-template ngbSlide *ngFor="let item of this.promociones; let i=index">
+      <ngb-carousel >
+        <ng-template ngbSlide *ngFor="let item of this.promociones; let i=index" >
          
-          <div  class="picsum-img-wrapper">
+          <div class="picsum-img-wrapper" >
             <img class="imagen-grande" [src]="item.img_promocion.tipo_cimagen" alt="Random first slide">
           </div>
           <!-- <div class="carousel-caption">

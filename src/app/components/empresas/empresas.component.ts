@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
-import {NgbRatingConfig} from '@ng-bootstrap/ng-bootstrap';
+import { MatCardModule } from '@angular/material/card';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import { FirebaseService } from '../../services/firebase.service';
 import { Router } from '@angular/router';
@@ -32,13 +34,15 @@ export class EmpresasComponent implements OnInit {
     this.firebaseService.getEmpresas().subscribe(resp=>{
       this.collection.data = resp.map((e:any)=>{
         //this.productos=resp;
+      
         return {
           razon_social: e.payload.doc.data().emp_crass,
           nombre_comercial: e.payload.doc.data().emp_cncomer,
           calificacion: e.payload.doc.data().emp_ncalif, 
           telefono: e.payload.doc.data().emp_ctelef,
           logo: e.payload.doc.data().emp_clogo,
-          categoria: e.payload.doc.data().emp_cate != null,
+          categoria: e.payload.doc.data().emp_cate,
+          descripcion:  e.payload.doc.data().aeco_cdesc
         } 
       })
     },

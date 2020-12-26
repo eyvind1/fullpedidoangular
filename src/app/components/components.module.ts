@@ -13,7 +13,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatCardModule } from '@angular/material/card';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 /* import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../environments/environment'; */
@@ -40,6 +41,8 @@ import { environment } from '../../environments/environment'; */
     MatIconModule,
     MatDividerModule,
     MatButtonModule,
+    MatCardModule,
+    FlexLayoutModule,
     // AngularFireModule.initializeApp(environment.firebase)
   ]
 })

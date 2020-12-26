@@ -16,7 +16,6 @@ export class EmpresaComponent implements OnInit {
   ) {
     this.activatedRoute.params.subscribe(params=>{
       console.log(params['id']);
-      
 
     })
    }
@@ -35,7 +34,7 @@ export class EmpresaComponent implements OnInit {
         });
       console.log(this.nombres);
       }); */
-      
+
         
         
         
