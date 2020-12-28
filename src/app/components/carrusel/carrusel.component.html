@@ -3,13 +3,15 @@
       <ngb-carousel >
         <ng-template ngbSlide *ngFor="let item of this.promociones; let i=index" >
          
-          <div class="picsum-img-wrapper" >
+          <div class="picsum-img-wrapper" *ngIf="item.fecha_caducidad <= fecha_actual" >
             <img class="imagen-grande" [src]="item.img_promocion.tipo_cimagen" alt="Random first slide">
           </div>
-          <!-- <div class="carousel-caption">
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </div> --> 
+          <!-- <div class="carousel-caption" >
+           
+            <h3>{{item.fecha_caducidad }}</h3>
+            <p>{{fecha_actual}}</p>
+            <p>holii</p>
+          </div>  -->
         </ng-template>
       </ngb-carousel>
   

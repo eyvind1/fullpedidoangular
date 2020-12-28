@@ -8,19 +8,22 @@ import { FirebaseService } from '../../services/firebase.service';
   styleUrls: ['./carrusel.component.css']
 })
 export class CarruselComponent implements OnInit {
-
+  fecha_actual : any;
   constructor(
     private firebaseService: FirebaseService,
-  ) { }
+  ) { 
+    this.fecha_actual = Date.now();
+  }
   promociones : any=[];
   ngOnInit(): void {
     this.firebaseService.getPromociones().subscribe(resp=>{
       this.promociones = resp.map((e:any)=>{
         //console.log(resp);
         //this.promociones=resp; 
+        
         return {
           img_promocion: e.payload.doc.data().prom_tipo,
-
+          fecha_caducidad: e.payload.doc.data().prom_dfecha_caducidad.toMillis(),
         } 
         
        })
