@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { FirebaseService } from '../../services/firebase.service';
+import { EmpresasModel } from '../../models/empresas';
 
 @Component({
   selector: 'app-empresa',
@@ -9,41 +10,31 @@ import { FirebaseService } from '../../services/firebase.service';
 })
 export class EmpresaComponent implements OnInit {
 
-  public empresas = {};
+  empresas: any = [];
+  //public empresas = {};
   constructor(
     private activatedRoute: ActivatedRoute,
     private firebaseService: FirebaseService,
   ) {
     this.activatedRoute.params.subscribe(params=>{
-      console.log(params['id']);
+      //console.log(params['id']);
+      this.firebaseService.getArrayEmpresas().subscribe(resp=>{
+        this.empresas = resp[params['id']];   
+        console.log(this.empresas);
+      }
 
-    })
+      );
+      
+    });
    }
 
   
-  collection= {count:0, data:[]  };
-  ngOnInit(): void {
 
-    
+  ngOnInit(): void {    
+  }
 
-    this.firebaseService.getEmpresas().subscribe(resp=>{
-     /*  this.nombres=[]
-      resp.forEach((e:any) =>{
-        this.nombres.push({
-          nombre_comercial: e.payload.doc.data().emp_cncomer,
-        });
-      console.log(this.nombres);
-      }); */
-
-        
-        
-        
-    },
-    error=>{
-      console.error(error)
-    }
-    ); 
-    
+  getnombre(){
+    console.log(this.empresas);
   }
 
   

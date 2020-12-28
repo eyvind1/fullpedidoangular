@@ -69,15 +69,16 @@
             </mat-card>
             
             <mat-card >
-              <div class="mat-body-2"> {{item.razon_social}}</div>
+              <div class="mat-body-2"> {{item.nombre_comercial}}</div>
               <mat-list>
-                  <div matLine *ngIf="item.nombre_comercial !== '-'; else comercialblock">
+                 <!--  <div matLine *ngIf="item.nombre_comercial !== '-'; else comercialblock">
                     <div>{{item.nombre_comercial}}</div>  
                     <ng-template #comercialblock>
                       <div>Sin nombre comercial</div>
                     </ng-template>
-                  </div>
-                  <!-- <div>{{item.nombre_comercial}}</div> -->
+                  </div> -->
+
+                  <div>{{item.razon_social}}</div> 
                   <!-- <div *ngIf="item.categoria.cat_cdes !== undefined ; then thenBlock else categoriablock" matLine>
                     <ng-template #thenBlock>
                       {{item.categoria.cat_cdes}}

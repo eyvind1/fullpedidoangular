@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { Empresas } from '../models/empresas';
+import { EmpresasModel } from '../models/empresas';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
 
-  empresas: Observable< Empresas[] >;
+  
   constructor(
     private firestore: AngularFirestore
   ) { }
@@ -20,6 +20,11 @@ export class FirebaseService {
   getPromociones(){
     return this.firestore.collection("Gmtc_promocion").snapshotChanges();
   }
+  getArrayEmpresas(){
+    return this.firestore.collection("Gmtc_empresa").valueChanges();
+  }
+
+  
   
   
   

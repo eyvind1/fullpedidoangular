@@ -1,5 +1,5 @@
 <div class="contenedor container">
-    <h1>Empresa <small>NOmbre Empresa</small></h1>
+    <h1>Empresa <small>{{this.empresas.emp_cncomer}}</small></h1>
     <hr>
     <div class="row text-right"></div>
 
@@ -17,17 +17,26 @@
 
                 <li class="list-group-item">
 
-                    Nombre - nombre
+                    {{this.empresas.emp_crass}}
                     <!-- <a [routerLink]="['/empresa',i]" class="btn btn-outline-primary">Ver más</a> -->
                 </li>
                 <li class="list-group-item">
 
-                    Nombre - Ruc
+                    Ruc: {{this.empresas.emp_cruc}}
                     <!-- <a [routerLink]="['/empresa',i]" class="btn btn-outline-primary">Ver más</a> -->
                 </li>
+                <li class="list-group-item">
 
+                    Teléfono: {{this.empresas.emp_ctelef}}
+                    
+                </li>
             </ul>
-
+            <ul class="list-group">
+                <h1>Productos</h1>
+                <li class="list-group-item" *ngFor="let item of this.empresas.emp_aprod">
+                    {{item.prod_cdesc}}
+                </li>
+            </ul>
 
         </div>
     </div>
