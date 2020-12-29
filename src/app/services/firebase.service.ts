@@ -24,6 +24,10 @@ export class FirebaseService {
     return this.firestore.collection("Gmtc_empresa").valueChanges();
   }
 
+  getArrayPromociones()
+  {
+    return this.firestore.collection("Gmtc_promocion").valueChanges();
+  }
   
   
   

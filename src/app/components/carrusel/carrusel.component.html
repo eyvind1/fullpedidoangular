@@ -1,18 +1,22 @@
 <div class="container-fluid">
     <div class="row">
-      <ngb-carousel >
-        <ng-template ngbSlide *ngFor="let item of this.promociones; let i=index" >
+      <ngb-carousel [interval]="5000" *ngIf="this.promociones_img">
+      
+          <ng-template ngbSlide *ngFor="let item of this.promociones_img" >
          
-          <div class="picsum-img-wrapper" *ngIf="item.fecha_caducidad <= fecha_actual" >
-            <img class="imagen-grande" [src]="item.img_promocion.tipo_cimagen" alt="Random first slide">
-          </div>
-          <!-- <div class="carousel-caption" >
-           
-            <h3>{{item.fecha_caducidad }}</h3>
-            <p>{{fecha_actual}}</p>
-            <p>holii</p>
-          </div>  -->
-        </ng-template>
+            <!-- <div class="picsum-img-wrapper" *ngIf="item.fecha_caducidad <= fecha_actual" >  -->
+            <!-- <div class="picsum-img-wrapper" > -->
+              <img class="imagen-grande" [src]="item.prom_tipo.tipo_cimagen" alt="Random first slide">
+            <!-- </div> -->
+            <!-- <div class="carousel-caption" >
+             
+              <h3>{{item.fecha_caducidad }}</h3>
+              <p>{{fecha_actual}}</p>
+              <p>holii</p>
+            </div>  -->
+          </ng-template>
+
+        
       </ngb-carousel>
   
     </div>

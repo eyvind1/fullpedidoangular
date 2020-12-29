@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CarruselComponent } from './carrusel/carrusel.component';
+import { PromocionesComponent } from './promociones/promociones.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EmpresasComponent } from './empresas/empresas.component';
@@ -14,8 +15,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import {FlexLayoutModule} from '@angular/flex-layout';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { MatSelectFilterModule } from 'mat-select-filter';
 /* import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../environments/environment'; */
 
@@ -25,13 +30,15 @@ import { environment } from '../../environments/environment'; */
     FooterComponent,
     CarruselComponent,
     EmpresasComponent,
-    EmpresaComponent
+    EmpresaComponent,
+    PromocionesComponent
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     CarruselComponent,
-    EmpresasComponent
+    EmpresasComponent,
+    PromocionesComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +50,11 @@ import { environment } from '../../environments/environment'; */
     MatButtonModule,
     MatCardModule,
     FlexLayoutModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatSelectFilterModule,
+    FormsModule,
     // AngularFireModule.initializeApp(environment.firebase)
   ]
 })

@@ -5,6 +5,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
+import { MatFormFieldModule } from '@angular/material/form-field'; 
+import { MatSelectModule } from '@angular/material/select';
+
 
 import { FirebaseService } from '../../services/firebase.service';
 import { Router } from '@angular/router';
@@ -27,7 +30,7 @@ export class EmpresasComponent implements OnInit {
 
   collection= {count:0, data:[]  };
   productos : any=[];
-  
+  selected = 'option2';
   ngOnInit(): void {
 
 

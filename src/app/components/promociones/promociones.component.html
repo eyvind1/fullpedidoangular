@@ -1,0 +1,32 @@
+<!-- <div class="col-md-6 d-flex container"> -->
+    
+    <div class="heading-section pl-md-4 pt-md-5">
+        <span class="subheading">Empresas Afiliadas</span>
+        <h2 class="mb-4">Nosotros somos los mejores</h2>
+      </div>
+
+    <div class="row">
+
+        <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Seleccione una Categoría</mat-label>
+              <mat-select [(ngModel)]="selected" name="categoria" [disableOptionCentering]="true" #select1 placeholder="Auto Focus">
+                <mat-select-filter *ngIf="select1.focused" [array]="categoriaList" (filteredReturn)="filteredList1 =$event"></mat-select-filter>  
+                
+                <mat-option *ngFor="let item of categoriaList" [value]="item.cat_cdes">
+                    {{item.cat_cdes}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+            <p>You selected: {{selected}}</p>
+          </div> 
+            <div class="col-12">
+                <img class="imagen-grande" src="../../../assets/images/about.jpg" alt="">
+            </div>
+
+      <div class="col-12">
+        <img class="imagen-grande" src="../../../assets/images/about.jpg" alt="">
+      </div>
+    </div>
+  <!-- </div> -->
