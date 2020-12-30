@@ -6,14 +6,14 @@
       </div>
 
     <div class="row">
-
+      <!-- combo box categorias -->
         <div>
             <mat-form-field appearance="fill">
               <mat-label>Seleccione una Categoría</mat-label>
               <mat-select [(ngModel)]="categoriaselected" name="categoria"  >
                 <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'cat_cdes'" [array]="categoriaList" (filteredReturn)="filteredListcategoria =$event"></mat-select-filter>  -->
                 
-                <mat-option *ngFor="let categoria of categoriaList" [value]="categoria.cat_cdes">
+                <mat-option *ngFor="let categoria of this.categorias" [value]="categoria.cat_cdes">
                     {{categoria.cat_cdes}}
                 </mat-option>
               </mat-select>
@@ -21,11 +21,11 @@
             
             <p>You selected: {{categoriaselected}}</p>
           </div> 
-
+          <!-- combo box departamentos -->
           <div>
             <mat-form-field appearance="fill">
               <mat-label>Seleccione una Departamento</mat-label>
-              <mat-select [(ngModel)]="departamentoselected" name="departamento" [disableOptionCentering]="true" (selectionChange)="filtrarProvincias() " >
+              <mat-select [(ngModel)]="departamentoselected" name="departamento" [disableOptionCentering]="true" (selectionChange)="filtrarProvincias()" (selectionChange)="filtrarImagenes()">
                 <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="departamentoList" (filteredReturn)="filteredListdepartamento =$event"></mat-select-filter>   -->
                 
                 <mat-option *ngFor="let item of this.departamentos" [value]="item.id_departamento">
@@ -36,14 +36,14 @@
             
             <p>You selected: {{departamentoselected}}</p>
           </div>
-
+          <!-- combo box provincias -->
           <div>
             <mat-form-field appearance="fill">
               <mat-label>Seleccione una Provincia</mat-label>
-              <mat-select [(ngModel)]="provinciaselected" name="provincia" [disableOptionCentering]="true"  >
+              <mat-select [(ngModel)]="provinciaselected" name="provincia" [disableOptionCentering]="true" (selectionChange)="filtrarDistritos()" >
                 <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="provinciaList" (filteredReturn)="filteredListprovincia =$event"></mat-select-filter>   -->
                 
-                <mat-option *ngFor="let item of provinciafiltered" [value]="item.nombre_provincia">
+                <mat-option *ngFor="let item of provinciafiltered" [value]="item.id_provincia">
                     {{item.nombre_provincia}}
                 </mat-option>
               </mat-select>
@@ -51,14 +51,14 @@
             
             <p>You selected: {{provinciaselected}}</p>
           </div>
-
+          <!-- combo box distritos -->
           <div>
             <mat-form-field appearance="fill">
               <mat-label>Seleccione una Distrito</mat-label>
               <mat-select [(ngModel)]="distritoselected" name="distrito" [disableOptionCentering]="true" >
                 <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="distritoList" (filteredReturn)="filteredListdistrito =$event"></mat-select-filter>   -->
                 
-                <mat-option *ngFor="let item of distritoList" [value]="item.nombre_distrito">
+                <mat-option *ngFor="let item of distritofiltered" [value]="item.nombre_distrito">
                     {{item.nombre_distrito}}
                 </mat-option>
               </mat-select>
@@ -67,14 +67,11 @@
             <p>You selected: {{distritoselected}}</p>
           </div>
 
+          <!-- imagenes de las promociones por ciudades -->
+          <div class="col-12" >
+              <img class="imagen-grande" src="../../../assets/images/about.jpg" alt="">
+          </div>
 
-
-            <div class="col-12">
-                <img class="imagen-grande" src="../../../assets/images/about.jpg" alt="">
-            </div>
-
-      <div class="col-12">
-        <img class="imagen-grande" src="../../../assets/images/about.jpg" alt="">
-      </div>
+          
     </div>
   <!-- </div> -->

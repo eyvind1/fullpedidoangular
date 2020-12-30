@@ -18,13 +18,13 @@ export class CarruselComponent implements OnInit {
   promociones_img : any=[];
   async ngOnInit() {
     
-    await this.firebaseService.getArrayPromociones().subscribe(resp=>{
+    this.firebaseService.getArrayPromociones().subscribe(resp=>{
       
         //console.log(resp);
         this.promociones=resp; 
         //console.log(this.promociones);
         this.promociones_img = this.promociones.filter((data:any)=>(data.prom_dfecha_caducidad.toMillis() <= this.fecha_actual));
-        console.log(this.promociones_img);
+        //console.log(this.promociones_img);
         
     },
     error=>{
