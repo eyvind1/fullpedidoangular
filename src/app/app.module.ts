@@ -13,7 +13,7 @@ import { CarruselComponent } from './components/carrusel/carrusel.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { DepartamentosService } from './services/departamentos.service';
 
 
 
@@ -33,7 +33,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     
   ],
-  providers: [],
+  providers: [
+    DepartamentosService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

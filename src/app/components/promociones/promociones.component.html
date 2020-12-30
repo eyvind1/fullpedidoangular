@@ -10,17 +10,65 @@
         <div>
             <mat-form-field appearance="fill">
               <mat-label>Seleccione una Categoría</mat-label>
-              <mat-select [(ngModel)]="selected" name="categoria" [disableOptionCentering]="true" #select1 placeholder="Auto Focus">
-                <mat-select-filter *ngIf="select1.focused" [array]="categoriaList" (filteredReturn)="filteredList1 =$event"></mat-select-filter>  
+              <mat-select [(ngModel)]="categoriaselected" name="categoria"  >
+                <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'cat_cdes'" [array]="categoriaList" (filteredReturn)="filteredListcategoria =$event"></mat-select-filter>  -->
                 
-                <mat-option *ngFor="let item of categoriaList" [value]="item.cat_cdes">
-                    {{item.cat_cdes}}
+                <mat-option *ngFor="let categoria of categoriaList" [value]="categoria.cat_cdes">
+                    {{categoria.cat_cdes}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
             
-            <p>You selected: {{selected}}</p>
+            <p>You selected: {{categoriaselected}}</p>
           </div> 
+
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Seleccione una Departamento</mat-label>
+              <mat-select [(ngModel)]="departamentoselected" name="departamento" [disableOptionCentering]="true" (selectionChange)="filtrarProvincias() " >
+                <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="departamentoList" (filteredReturn)="filteredListdepartamento =$event"></mat-select-filter>   -->
+                
+                <mat-option *ngFor="let item of this.departamentos" [value]="item.id_departamento">
+                    {{item.nombre_departamento}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+            <p>You selected: {{departamentoselected}}</p>
+          </div>
+
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Seleccione una Provincia</mat-label>
+              <mat-select [(ngModel)]="provinciaselected" name="provincia" [disableOptionCentering]="true"  >
+                <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="provinciaList" (filteredReturn)="filteredListprovincia =$event"></mat-select-filter>   -->
+                
+                <mat-option *ngFor="let item of provinciafiltered" [value]="item.nombre_provincia">
+                    {{item.nombre_provincia}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+            <p>You selected: {{provinciaselected}}</p>
+          </div>
+
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Seleccione una Distrito</mat-label>
+              <mat-select [(ngModel)]="distritoselected" name="distrito" [disableOptionCentering]="true" >
+                <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="distritoList" (filteredReturn)="filteredListdistrito =$event"></mat-select-filter>   -->
+                
+                <mat-option *ngFor="let item of distritoList" [value]="item.nombre_distrito">
+                    {{item.nombre_distrito}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+            <p>You selected: {{distritoselected}}</p>
+          </div>
+
+
+
             <div class="col-12">
                 <img class="imagen-grande" src="../../../assets/images/about.jpg" alt="">
             </div>
