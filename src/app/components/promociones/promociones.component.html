@@ -25,7 +25,7 @@
           <div>
             <mat-form-field appearance="fill">
               <mat-label>Seleccione una Departamento</mat-label>
-              <mat-select [(ngModel)]="departamentoselected" name="departamento" [disableOptionCentering]="true" (selectionChange)="filtrarProvincias()" (selectionChange)="filtrarImagenes()">
+              <mat-select [(ngModel)]="departamentoselected" name="departamento" [disableOptionCentering]="true" (selectionChange)="filtrarProvincias()" >
                 <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="departamentoList" (filteredReturn)="filteredListdepartamento =$event"></mat-select-filter>   -->
                 
                 <mat-option *ngFor="let item of this.departamentos" [value]="item.id_departamento">
@@ -68,8 +68,9 @@
           </div>
 
           <!-- imagenes de las promociones por ciudades -->
-          <div class="col-12" >
-              <img class="imagen-grande" src="../../../assets/images/about.jpg" alt="">
+          <div class="col-12" *ngFor="let item of this.promociones_img" >
+            <img class="imagen-grande" [src]="item.prom_tipo.tipo_cimagen" alt="Random first slide">
+            
           </div>
 
           

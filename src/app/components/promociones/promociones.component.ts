@@ -50,7 +50,7 @@ export class PromocionesComponent implements OnInit {
 
     this._firebaseService.getArrayPromociones().subscribe(resp=>{
       this.promociones=resp;
-      //this.promociones_img = this.promociones.filter((data:any)=>(data.prom_aubigeo.find((e:any)=>(e.ubi_cdepart === "Arequipa"))));
+      this.promociones_img = this.promociones.filter((data:any)=>(data.prom_aubigeo.find((e:any)=>(e.ubi_cubigeo !== "000000"))));
       //console.log(this.promociones_img);
       },
       error=>{
@@ -68,8 +68,8 @@ export class PromocionesComponent implements OnInit {
     this.distritofiltered = this.distritos.filter((data:any)=>(data.id_provincia == this.provinciaselected));
   }
 
-  filtrarImagenes(){
-    this.promociones_img = this.promociones.filter((data:any)=>(data.prom_aubigeo.find((e:any)=>(e.ubi_cdepart === "Arequipa"))));
+  filtrarImagenes(depart:string){
+    this.promociones_img = this.promociones.filter((data:any)=>(data.prom_aubigeo.find((e:any)=>(e.ubi_cdepart === depart ))));
     console.log(this.promociones_img);
   }
 }
