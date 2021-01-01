@@ -21,6 +21,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatSelectFilterModule } from 'mat-select-filter';
+import { ProductosComponent } from './productos/productos.component';
 /* import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../environments/environment'; */
 
@@ -31,7 +32,8 @@ import { environment } from '../../environments/environment'; */
     CarruselComponent,
     EmpresasComponent,
     EmpresaComponent,
-    PromocionesComponent
+    PromocionesComponent,
+    ProductosComponent
   ],
   exports: [
     HeaderComponent,
