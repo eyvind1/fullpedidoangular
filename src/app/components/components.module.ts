@@ -22,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatSelectFilterModule } from 'mat-select-filter';
 import { ProductosComponent } from './productos/productos.component';
+
 /* import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../environments/environment'; */
 
@@ -33,7 +34,7 @@ import { environment } from '../../environments/environment'; */
     EmpresasComponent,
     EmpresaComponent,
     PromocionesComponent,
-    ProductosComponent
+    ProductosComponent,
   ],
   exports: [
     HeaderComponent,
@@ -57,6 +58,8 @@ import { environment } from '../../environments/environment'; */
     MatInputModule,
     MatSelectFilterModule,
     FormsModule,
+   
+    
     // AngularFireModule.initializeApp(environment.firebase)
   ]
 })

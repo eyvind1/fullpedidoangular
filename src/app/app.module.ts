@@ -14,6 +14,8 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DepartamentosService } from './services/departamentos.service';
+import { FilterComboBoxPipe } from './pipes/filter-combo-box.pipe';
+
 
 
 
@@ -22,6 +24,8 @@ import { DepartamentosService } from './services/departamentos.service';
     AppComponent,
     HomeComponent,
     AboutComponent,
+    FilterComboBoxPipe,
+  
 
   ],
   imports: [
@@ -31,6 +35,7 @@ import { DepartamentosService } from './services/departamentos.service';
     NgbModule,
     AngularFireModule.initializeApp(environment.firebase),
     BrowserAnimationsModule,
+    FilterComboBoxPipe,
     
   ],
   providers: [

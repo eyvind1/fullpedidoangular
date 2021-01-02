@@ -58,8 +58,57 @@
               <p><a href="#" class="btn btn-primary">Read more</a></p>
             </div>
           </div> -->
-   
-          <div *ngFor="let item of collection.data; let i=index" fxLayout="row"  [style.margin-top]="'12px'" fxLayoutAlign="space-around center" >
+
+
+          <!-- combo box departamentos -->
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Seleccione una Departamento</mat-label>
+              <mat-select [(ngModel)]="departamentoselected" name="departamento" [disableOptionCentering]="true" (selectionChange)="filtrarProvincias()" >
+                <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="departamentoList" (filteredReturn)="filteredListdepartamento =$event"></mat-select-filter>   -->
+                
+                <mat-option *ngFor="let item of this.departamentos" [value]="item.id_departamento">
+                    {{item.nombre_departamento}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+            <p>You selected: {{departamentoselected}}</p>
+          </div>
+          <!-- combo box provincias -->
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Seleccione una Provincia</mat-label>
+              <mat-select [(ngModel)]="provinciaselected" name="provincia" [disableOptionCentering]="true" (selectionChange)="filtrarDistritos()" >
+                <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="provinciaList" (filteredReturn)="filteredListprovincia =$event"></mat-select-filter>   -->
+                
+                <mat-option *ngFor="let item of provinciafiltered" [value]="item.id_provincia">
+                    {{item.nombre_provincia}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+            <p>You selected: {{provinciaselected}}</p>
+          </div>
+          <!-- combo box distritos -->
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Seleccione una Distrito</mat-label>
+              <mat-select [(ngModel)]="distritoselected" name="distrito" [disableOptionCentering]="true" >
+                <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="distritoList" (filteredReturn)="filteredListdistrito =$event"></mat-select-filter>   -->
+                
+                <mat-option *ngFor="let item of distritofiltered" [value]="item.nombre_distrito">
+                    {{item.nombre_distrito}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+            <p>You selected: {{distritoselected}}</p>
+          </div>
+
+
+          <!-- Lista de Empresas -->
+          <div *ngFor="let item of collection.data; let i=index " fxLayout="row"  [style.margin-top]="'12px'" fxLayoutAlign="space-around center" >
             <mat-card>
               
               <img *ngIf="item.logo === ''; else imagenblock" matListAvatar src="../../../assets/images/invoice_logo.png" alt="" width="60px">

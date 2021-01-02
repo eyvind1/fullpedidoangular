@@ -7,7 +7,13 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { MatFormFieldModule } from '@angular/material/form-field'; 
 import { MatSelectModule } from '@angular/material/select';
-
+import { DepartamentosService } from '../../services/departamentos.service';
+import { ProvinciasService } from 'src/app/services/provincias.service';
+import { DistritosService } from 'src/app/services/distritos.service';
+import { DepartamentosModel } from '../../models/departamento';
+import { ProvinciasModel } from '../../models/provincia';
+import { DistritosModel } from '../../models/distrito';
+import { FilterComboBoxPipe } from '../../pipes/filter-combo-box.pipe';
 
 import { FirebaseService } from '../../services/firebase.service';
 import { Router } from '@angular/router';
@@ -19,20 +25,35 @@ import { Router } from '@angular/router';
 })
 export class EmpresasComponent implements OnInit {
 
+  departamentos: DepartamentosModel[]=[];
+  provincias: ProvinciasModel[]=[];
+  distritos: DistritosModel[]=[];
+
   constructor(
     private firebaseService: FirebaseService,
     private router: Router,
     public config: NgbRatingConfig,
+    private _departamentosService:DepartamentosService,
+    private _provinciasService: ProvinciasService,
+    private _distritoService: DistritosService,
   ) {
     config.max = 5;
     config.readonly = true;
    }
 
+  departamentoselected :any;
+  provinciaselected: any;
+  distritoselected: any;
+  provinciafiltered:any=[];
+  distritofiltered: any=[];
   collection= {count:0, data:[]  };
   productos : any=[];
   selected = 'option2';
+  filterPost = '';
   ngOnInit(): void {
-
+    this.departamentos = this._departamentosService.getDepartamentos();
+    this.provincias = this._provinciasService.getProvincias();
+    this.distritos = this._distritoService.getDistritos();
 
     this.firebaseService.getEmpresas().subscribe(resp=>{
       this.collection.data = resp.map((e:any)=>{
@@ -86,5 +107,14 @@ export class EmpresasComponent implements OnInit {
       
     }
   } */
+
+  filtrarProvincias(){
+    this.provinciafiltered = this.provincias.filter((data:any)=>(data.id_departamento == this.departamentoselected));
+    console.log(this.provinciafiltered);
+  }
+
+  filtrarDistritos(){
+    this.distritofiltered = this.distritos.filter((data:any)=>(data.id_provincia == this.provinciaselected));
+  }
 
 }

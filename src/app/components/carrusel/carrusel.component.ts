@@ -22,9 +22,15 @@ export class CarruselComponent implements OnInit {
       
         //console.log(resp);
         this.promociones=resp; 
+        for (let index = 0; index < this.promociones.length; index++) {
+          this.promociones_img[index] = this.promociones[index].prom_tipo.tipo_cimagen;
+          
+        }
         //console.log(this.promociones);
-        this.promociones_img = this.promociones.filter((data:any)=>(data.prom_dfecha_caducidad.toMillis() <= this.fecha_actual));
-        //console.log(this.promociones_img);
+        //this.promociones_img = this.promociones.filter((data:any)=>(data.prom_dfecha_caducidad.toMillis() <= this.fecha_actual));
+        console.log(this.promociones_img);
+        
+        //this.promociones_img=this.promociones;
         
     },
     error=>{
