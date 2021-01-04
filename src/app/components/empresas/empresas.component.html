@@ -108,7 +108,41 @@
 
 
           <!-- Lista de Empresas -->
-          <div *ngFor="let item of this.empresas ; let i=index " fxLayout="row"  [style.margin-top]="'12px'" fxLayoutAlign="space-around center" >
+          <div class="card" style="width: 500px;" *ngFor="let item of this.empresas ; let i=index ">
+            <div class="row no-gutters">
+                <div class="col-sm-5 my-auto text-center">
+                
+                    <img *ngIf="item.emp_clogo === ''; else imagenblock" class="card-img rounded" src="../../../assets/images/invoice_logo.png" alt="">
+                    <ng-template #imagenblock>
+                      <img class="card-img rounded" src={{item.emp_clogo}} alt="" >
+                    </ng-template> 
+                </div>
+                <div class="col-sm-7">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.emp_cncomer}}</h5>
+                        <h6 class="card-title">{{item.emp_crass}}</h6>
+                        <p class="card-text">{{item.aeco_cdesc}}</p>
+                        <h6 class="card-title">{{item.emp_cdepa}} - {{item.emp_cprov}} - {{item.emp_cdist}}</h6>
+                        <p>
+                          <ng-template #t let-fill="fill">
+                            <span class="star" [class.full]="fill === 100">
+                              <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
+                            </span>
+                          </ng-template>
+                          <ngb-rating [starTemplate]="t" [rate]="item.emp_ncalif" [readonly]="true" [max]="5"></ngb-rating> 
+                        </p>
+                        <div matLine>
+                          <button mat-button (click)="verEmpresa(i)">Ver Productos</button>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+         <!--  <div *ngFor="let item of this.empresas ; let i=index " fxLayout="row"  [style.margin-top]="'12px'" fxLayoutAlign="space-around center" >
             <mat-card>
               
               <img *ngIf="item.emp_clogo === ''; else imagenblock" matListAvatar src="../../../assets/images/invoice_logo.png" alt="" width="60px">
@@ -119,7 +153,7 @@
             
             <mat-card >
               <div class="mat-body-2"> {{item.emp_cncomer}}</div>
-              <mat-list>
+              <mat-list> -->
                  <!--  <div matLine *ngIf="item.nombre_comercial !== '-'; else comercialblock">
                     <div>{{item.nombre_comercial}}</div>  
                     <ng-template #comercialblock>
@@ -127,7 +161,7 @@
                     </ng-template>
                   </div> -->
 
-                  <div>{{item.emp_crass}}</div> 
+                  <!-- <div>{{item.emp_crass}}</div>  -->
                   <!-- <div *ngIf="item.categoria.cat_cdes !== undefined ; then thenBlock else categoriablock" matLine>
                     <ng-template #thenBlock>
                       {{item.categoria.cat_cdes}}
@@ -137,7 +171,7 @@
                     </ng-template>  
                         
                   </div> -->
-                  <div>{{item.aeco_cdesc}}</div>
+                  <!-- <div>{{item.aeco_cdesc}}</div>
                   <div matLine>
                     {{item.emp_cdepa}} - {{item.emp_cprov}} - {{item.emp_cdist}}
                   </div>
@@ -155,7 +189,7 @@
               </mat-list>
             </mat-card>
           </div> 
-
+ -->
         
   
     
