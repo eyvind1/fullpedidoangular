@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { MatSelectFilterModule } from 'mat-select-filter';
 import { CategoriasModel } from '../../models/categoria';
 import { DepartamentosModel } from '../../models/departamento';
@@ -14,9 +14,10 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   templateUrl: './promociones.component.html',
   styleUrls: ['./promociones.component.css']
 })
-export class PromocionesComponent implements OnInit {
+export class PromocionesComponent implements OnInit, OnChanges {
 
   @Input() promociones:any[];
+  promocionesfiltered:any[];
   //public filteredListcategoria = this.categoriaList.slice();
   
   //public filteredListdepartamento = this.departamentoList.slice();
@@ -31,6 +32,10 @@ export class PromocionesComponent implements OnInit {
     //private _categoriaService: CategoriasService,
     private _firebaseService: FirebaseService,
   ) { }
+  ngOnChanges(): void {
+    this.promociones = this.promociones.filter((data:any)=>(data.prom_aubigeo.find((e:any)=>(e.ubi_cubigeo === "000000"))));
+    
+  }
   categoriaselected :string;
   departamentoselected :any;
   provinciaselected: any;
@@ -51,8 +56,11 @@ export class PromocionesComponent implements OnInit {
         console.error(error)
       }
     ); */
+    
+    
+    
   }
-
+  
   
 
   filtrarImagenes(depart:string){

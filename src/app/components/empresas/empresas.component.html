@@ -94,10 +94,10 @@
           <div>
             <mat-form-field appearance="fill">
               <mat-label>Seleccione una Distrito</mat-label>
-              <mat-select [(ngModel)]="distritoselected" name="distrito" [disableOptionCentering]="true" >
+              <mat-select [(ngModel)]="distritoselected" name="distrito" [disableOptionCentering]="true" (selectionChange)="filtrarEmpresasDistritos()">
                 <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="distritoList" (filteredReturn)="filteredListdistrito =$event"></mat-select-filter>   -->
                 
-                <mat-option *ngFor="let item of distritofiltered" [value]="item.nombre_distrito">
+                <mat-option *ngFor="let item of distritofiltered" [value]="item.id_distrito">
                     {{item.nombre_distrito}}
                 </mat-option>
               </mat-select>
@@ -108,7 +108,7 @@
 
 
           <!-- Lista de Empresas -->
-          <div class="card" style="width: 500px;" *ngFor="let item of this.empresas ; let i=index ">
+          <div class="card" style="width: 500px;" *ngFor="let item of this.empresas |filterComboBox:nameDepartamento| filterProvincias:nameDistrito; let i=index ">
             <div class="row no-gutters">
                 <div class="col-sm-5 my-auto text-center">
                 

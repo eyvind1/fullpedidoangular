@@ -25,7 +25,8 @@ import { FormsModule } from '@angular/forms';
 import { MatSelectFilterModule } from 'mat-select-filter';
 import { FilterComboBoxPipe } from '../pipes/filter-combo-box.pipe';
 import { LoadingComponent } from './loading/loading.component';
-
+import { MatMenuModule } from '@angular/material/menu'
+import { FilterProvinciasPipe } from '../pipes/filter-provincias.pipe';
 
 /* import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../environments/environment'; */
@@ -40,7 +41,8 @@ import { environment } from '../../environments/environment'; */
     PromocionesComponent,
     ProductosComponent,
     FilterComboBoxPipe,
-    LoadingComponent
+    LoadingComponent,
+    FilterProvinciasPipe,
   ],
   exports: [
     HeaderComponent,
@@ -65,6 +67,7 @@ import { environment } from '../../environments/environment'; */
     MatInputModule,
     MatSelectFilterModule,
     FormsModule,
+    MatMenuModule,
    
     
     // AngularFireModule.initializeApp(environment.firebase)

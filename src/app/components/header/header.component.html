@@ -33,7 +33,7 @@
       <a class="navbar-brand" href="index.html"><img src="../../../assets/images/logonav.jpg" alt="" width="70px"></a>
       <form action="#" class="searchform order-sm-start order-lg-last">
     <div class="form-group d-flex">
-      <input type="text" class="form-control pl-3" placeholder="Search">
+      <input type="text" class="form-control pl-3" placeholder="Búsqueda">
       <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
     </div>
     </form>
@@ -48,8 +48,11 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               Categorías
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
-              <a *ngFor="let item of this.categorias" class="dropdown-item" href="#">{{item.cat_cdes}}</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown"  >
+              <a *ngFor="let item of this.categorias" class="dropdown-item" href="#" >
+                {{item.cat_cdes}}
+              </a>
+              <a class="dropdown-item" href="#">{{categoriaselected}}</a>
              <!--  <a class="dropdown-item" href="#">Ferreterias</a>
               <a class="dropdown-item" href="#">Licorerías</a>
               <a class="dropdown-item" href="#">Librerías</a>
@@ -60,6 +63,8 @@
               <!-- <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a> -->
             </div>
+            
+            
           </li>
           <!-- <li class="nav-item" routerLinkActive="active"><a routerLink="/about" class="nav-link">About</a></li>
           <li class="nav-item"><a href="services.html" class="nav-link">Empresas</a></li>

@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filterComboBox'
+  name: 'filterProvincias'
 })
-export class FilterComboBoxPipe implements PipeTransform {
+export class FilterProvinciasPipe implements PipeTransform {
 
   transform(value: any, arg:any):any  {
     if (!arg ) {
@@ -12,7 +12,7 @@ export class FilterComboBoxPipe implements PipeTransform {
     const results = [];
   
     for (const post of value) {
-      if ((post.emp_cdepa.toLowerCase().indexOf(arg.toLowerCase())>-1)) {
+      if ((post.emp_cdist.toLowerCase().indexOf(arg.toLowerCase())>-1)) {
         results.push(post);
       }
       

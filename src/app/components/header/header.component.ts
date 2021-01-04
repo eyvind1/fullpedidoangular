@@ -9,6 +9,7 @@ import { CategoriasService } from 'src/app/services/categorias.service';
 })
 export class HeaderComponent implements OnInit {
   categorias: CategoriasModel[]=[];
+  categoriaselected: string;
   constructor(
     private _categoriaService: CategoriasService,
   ) { }

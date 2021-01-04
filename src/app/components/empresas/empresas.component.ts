@@ -44,12 +44,17 @@ export class EmpresasComponent implements OnInit {
   departamentoselected :any;
   provinciaselected: any;
   distritoselected: any;
+  nameDepartamento: string;
+  nameProvincia: string;
+  nameDistrito: string;
   provinciafiltered:any=[];
   distritofiltered: any=[];
-  collection= {count:0, data:[]  };
+  nameDepartamentofiltered:any=[];
+  nameProvinciafiltered:any=[];
+  nameDistritofiltered:any=[];
   productos : any=[];
-  selected = 'option2';
-  filterPost = '';
+
+  filterPost = 'AREQUIPA';
   ngOnInit(): void {
     this.departamentos = this._departamentosService.getDepartamentos();
     this.provincias = this._provinciasService.getProvincias();
@@ -113,11 +118,26 @@ export class EmpresasComponent implements OnInit {
 
   filtrarProvincias(){
     this.provinciafiltered = this.provincias.filter((data:any)=>(data.id_departamento == this.departamentoselected));
-    //console.log(this.provinciafiltered);
+    this.nameDepartamentofiltered = this.departamentos.filter((data:any)=>(data.id_departamento == this.departamentoselected));
+    this.nameDepartamento = this.nameDepartamentofiltered[0].nombre_departamento;
   }
 
   filtrarDistritos(){
     this.distritofiltered = this.distritos.filter((data:any)=>(data.id_provincia == this.provinciaselected));
+    this.nameProvinciafiltered = this.provincias.filter((data:any)=>(data.id_provincia == this.provinciaselected));
+    this.nameProvincia = this.nameDepartamentofiltered[0].nombre_provincia;
   }
+
+  filtrarEmpresasDistritos(){
+    this.nameDistritofiltered = this.distritos.filter((data:any)=>(data.id_distrito == this.distritoselected));
+    this.nameDistrito = this.nameDistritofiltered[0].nombre_distrito;
+  }
+
+  //getNamefromId(id:number):string{
+    //this.namefiltered = this.departamentos.filter((data:any)=>(data.id_departamento == id));
+    //1this.nameDepartamento = this.namefiltered[0].nombre_departamento;
+    //return this.nameDepartamento;
+  //}
+  
 
 }

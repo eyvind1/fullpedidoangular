@@ -15,6 +15,7 @@ import { AngularFireModule } from '@angular/fire';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DepartamentosService } from './services/departamentos.service';
 import { NoImagePipe } from './pipes/no-image.pipe';
+//import { FilterProvinciasPipe } from './pipes/filter-provincias.pipe';
 //import { FilterComboBoxPipe } from './pipes/filter-combo-box.pipe';
 
 
@@ -26,6 +27,7 @@ import { NoImagePipe } from './pipes/no-image.pipe';
     HomeComponent,
     AboutComponent,
     NoImagePipe,
+    //FilterProvinciasPipe,
     //FilterComboBoxPipe,
   
 
