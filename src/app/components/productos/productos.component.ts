@@ -11,7 +11,7 @@ export class ProductosComponent implements OnInit {
   @Input() producto:any={};
   
   ngOnInit(): void {
-    console.log(this.producto);
+    //console.log(this.producto);
   }
 
 }

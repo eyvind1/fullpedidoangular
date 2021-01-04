@@ -5,17 +5,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterComboBoxPipe implements PipeTransform {
 
-  transform(value: any[],filterString: string, propName:string): any[] {
-    const resultArray = [];
-    if (value.length ===0 || filterString === '' || propName === '') {
-      return value;
-    }
-    for (const item of value) {
-      if (item[propName]=== filterString){
-        resultArray.push(item);
+  transform(value: any, arg:any):any  {
+    const results = [];
+    for (const post of value) {
+      if (post.departamento.indexOf(arg)>-1) {
+        console.log('Sip')
       }
+      
     }
-    return resultArray;
   }
 
 }

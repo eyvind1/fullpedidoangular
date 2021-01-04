@@ -6,10 +6,12 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CarruselComponent } from './carrusel/carrusel.component';
 import { PromocionesComponent } from './promociones/promociones.component';
-
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EmpresasComponent } from './empresas/empresas.component';
 import { EmpresaComponent } from './empresa/empresa.component';
+import { ProductosComponent } from './productos/productos.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
@@ -21,7 +23,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatSelectFilterModule } from 'mat-select-filter';
-import { ProductosComponent } from './productos/productos.component';
+import { FilterComboBoxPipe } from '../pipes/filter-combo-box.pipe';
+import { LoadingComponent } from './loading/loading.component';
+
 
 /* import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../environments/environment'; */
@@ -35,6 +39,8 @@ import { environment } from '../../environments/environment'; */
     EmpresaComponent,
     PromocionesComponent,
     ProductosComponent,
+    FilterComboBoxPipe,
+    LoadingComponent
   ],
   exports: [
     HeaderComponent,
@@ -42,6 +48,7 @@ import { environment } from '../../environments/environment'; */
     CarruselComponent,
     EmpresasComponent,
     PromocionesComponent,
+    LoadingComponent,
   ],
   imports: [
     CommonModule,

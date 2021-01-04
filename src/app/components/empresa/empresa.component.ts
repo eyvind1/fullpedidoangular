@@ -20,7 +20,7 @@ export class EmpresaComponent implements OnInit {
       //console.log(params['id']);
       this.firebaseService.getArrayEmpresas().subscribe(resp=>{
         this.empresas = resp[params['id']];   
-        console.log(this.empresas);
+        //console.log(this.empresas);
       }
 
       );

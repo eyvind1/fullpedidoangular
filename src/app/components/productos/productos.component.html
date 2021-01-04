@@ -2,7 +2,10 @@
   
     
       <div class="card">
-        <img class="card-img-top" [src]="producto.prod_cimg" alt="productos">
+        <img *ngIf="producto.prod_cimg !== ''; else imagenblock" class="card-img-top" [src]="producto.prod_cimg" alt="productos">
+        <ng-template #imagenblock>
+          <img class="card-img-top" src="../../../assets/images/no_image.jpg" alt="productos">
+        </ng-template>
         <div class="card-body">
           <h5 class="card-title"> <small>{{producto.prod_nprev1}} S/.</small> </h5>
           <p class="card-text"> {{producto.prod_cdesc}}</p>

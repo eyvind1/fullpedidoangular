@@ -108,7 +108,7 @@
 
 
           <!-- Lista de Empresas -->
-          <div *ngFor="let item of collection.data; let i=index " fxLayout="row"  [style.margin-top]="'12px'" fxLayoutAlign="space-around center" >
+          <div *ngFor="let item of collection.data ; let i=index " fxLayout="row"  [style.margin-top]="'12px'" fxLayoutAlign="space-around center" >
             <mat-card>
               
               <img *ngIf="item.logo === ''; else imagenblock" matListAvatar src="../../../assets/images/invoice_logo.png" alt="" width="60px">
@@ -139,7 +139,15 @@
                   </div> -->
                   <div>{{item.descripcion}}</div>
                   <div matLine>
-                    <ngb-rating [rate]="item.calificacion"></ngb-rating> 
+                    {{item.departamento}} - {{item.provincia}} - {{item.distrito}}
+                  </div>
+                  <div matLine>
+                    <ng-template #t let-fill="fill">
+                      <span class="star" [class.full]="fill === 100">
+                        <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
+                      </span>
+                    </ng-template>
+                    <ngb-rating [starTemplate]="t" [rate]="item.calificacion" [readonly]="true" [max]="5"></ngb-rating> 
                   </div>
                   <div matLine>
                     <button mat-button (click)="verEmpresa(i)">Ver Productos</button>   

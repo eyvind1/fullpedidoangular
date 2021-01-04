@@ -1,5 +1,11 @@
-<div>
-  <app-carrusel></app-carrusel>
+<!-- <div>
+  <app-loading *ngIf="loading"></app-loading>
+</div> -->
+<div class="row" *ngIf="promociones.length > 0">
+  <div class="col">
+    <app-carrusel [promociones]="promociones"></app-carrusel>
+  </div>
+  
 </div>
 
 <section class="ftco-section ftco-no-pt bg-light">

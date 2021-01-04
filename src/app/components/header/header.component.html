@@ -48,14 +48,15 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               Categorías
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Ferreterias</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+              <a *ngFor="let item of this.categorias" class="dropdown-item" href="#">{{item.cat_cdes}}</a>
+             <!--  <a class="dropdown-item" href="#">Ferreterias</a>
               <a class="dropdown-item" href="#">Licorerías</a>
               <a class="dropdown-item" href="#">Librerías</a>
               <a class="dropdown-item" href="#">Útiles Escolares</a>
               <a class="dropdown-item" href="#">Boticas</a>
               <a class="dropdown-item" href="#">Tiendas</a>
-              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Action</a> -->
               <!-- <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a> -->
             </div>

@@ -13,7 +13,7 @@ import { DistritosService } from 'src/app/services/distritos.service';
 import { DepartamentosModel } from '../../models/departamento';
 import { ProvinciasModel } from '../../models/provincia';
 import { DistritosModel } from '../../models/distrito';
-import { FilterComboBoxPipe } from '../../pipes/filter-combo-box.pipe';
+//import { FilterComboBoxPipe } from '../../pipes/filter-combo-box.pipe';
 
 import { FirebaseService } from '../../services/firebase.service';
 import { Router } from '@angular/router';
@@ -37,10 +37,10 @@ export class EmpresasComponent implements OnInit {
     private _provinciasService: ProvinciasService,
     private _distritoService: DistritosService,
   ) {
-    config.max = 5;
-    config.readonly = true;
+    //config.max = 5.0;
+    //config.readonly = true;
    }
-
+  nombre: any;
   departamentoselected :any;
   provinciaselected: any;
   distritoselected: any;
@@ -66,7 +66,10 @@ export class EmpresasComponent implements OnInit {
           telefono: e.payload.doc.data().emp_ctelef,
           logo: e.payload.doc.data().emp_clogo,
           categoria: e.payload.doc.data().emp_cate,
-          descripcion:  e.payload.doc.data().aeco_cdesc
+          descripcion:  e.payload.doc.data().aeco_cdesc,
+          departamento: e.payload.doc.data().emp_cdepa,
+          provincia: e.payload.doc.data().emp_cprov,
+          distrito: e.payload.doc.data().emp_cdist
         } 
       })
     },
@@ -110,7 +113,7 @@ export class EmpresasComponent implements OnInit {
 
   filtrarProvincias(){
     this.provinciafiltered = this.provincias.filter((data:any)=>(data.id_departamento == this.departamentoselected));
-    console.log(this.provinciafiltered);
+    //console.log(this.provinciafiltered);
   }
 
   filtrarDistritos(){

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriasModel } from 'src/app/models/categoria';
+import { CategoriasService } from 'src/app/services/categorias.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  categorias: CategoriasModel[]=[];
+  constructor(
+    private _categoriaService: CategoriasService,
+  ) { }
 
   ngOnInit(): void {
+    this.categorias= this._categoriaService.getCategorias();
   }
 
 }
