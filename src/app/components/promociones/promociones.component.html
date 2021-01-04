@@ -25,8 +25,8 @@
           
 
           <!-- imagenes de las promociones por ciudades -->
-          <div class="col-12" *ngFor="let item of this.promociones_img" >
-            <img class="imagen-grande" [src]="item.prom_tipo.tipo_cimagen" alt="Random first slide">
+          <div class="col-12" *ngFor="let item of this.promociones" >
+            <img class="img-thumbnail" [src]="item.prom_tipo.tipo_cimagen" alt="Random first slide">
             
           </div>
 

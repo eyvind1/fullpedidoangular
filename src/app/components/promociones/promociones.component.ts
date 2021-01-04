@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatSelectFilterModule } from 'mat-select-filter';
 import { CategoriasModel } from '../../models/categoria';
 import { DepartamentosModel } from '../../models/departamento';
@@ -16,6 +16,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class PromocionesComponent implements OnInit {
 
+  @Input() promociones:any[];
   //public filteredListcategoria = this.categoriaList.slice();
   
   //public filteredListdepartamento = this.departamentoList.slice();
@@ -36,21 +37,20 @@ export class PromocionesComponent implements OnInit {
   distritoselected: any;
   provinciafiltered:any=[];
   distritofiltered: any=[];
-  promociones: any=[];
   promociones_img: any=[];
   ngOnInit(): void {
     
     //this.categorias = this._categoriaService.getCategorias();
 
-    this._firebaseService.getArrayPromociones().subscribe(resp=>{
+    /* this._firebaseService.getArrayPromociones().subscribe(resp=>{
       this.promociones=resp;
       this.promociones_img = this.promociones.filter((data:any)=>(data.prom_aubigeo.find((e:any)=>(e.ubi_cubigeo === "000000"))));
-      //console.log(this.promociones_img);
+      
       },
       error=>{
         console.error(error)
       }
-    );
+    ); */
   }
 
   

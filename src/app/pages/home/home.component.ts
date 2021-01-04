@@ -11,22 +11,20 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 export class HomeComponent implements OnInit {
 
   public promociones: any=[];
-
+  fecha_actual : any;
   constructor(
     private _firebaseService: FirebaseService,
-  ) { }
+  ) { 
+    this.fecha_actual = Date.now();
+  }
 
   ngOnInit(): void {
     this._firebaseService.getArrayPromociones().subscribe(resp=>{
       
-      //console.log(resp);
       this.promociones=resp; 
+      this.promociones = this.promociones.filter((data:any)=>(data.prom_dfecha_caducidad.toMillis() >= this.fecha_actual));
+      //console.log(this.promociones);
       
-      console.log(this.promociones);
-      //this.promociones_img = this.promociones.filter((data:any)=>(data.prom_dfecha_caducidad.toMillis() <= this.fecha_actual));
-      //console.log(this.promociones_img);
-      
-      //this.promociones_img=this.promociones;
       
       },
       error=>{

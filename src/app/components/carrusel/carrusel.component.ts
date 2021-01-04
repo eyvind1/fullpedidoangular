@@ -15,17 +15,10 @@ Swiper.use([Autoplay]);
 export class CarruselComponent implements OnInit, AfterViewInit {
   
   @Input() promociones:any[];
-  fecha_actual : any;
   //@Input() categoria:any={};
   public mySwiper: Swiper;
 
-  constructor(
-    
-    private firebaseService: FirebaseService,
-  ) { 
-    this.fecha_actual = Date.now();
-    
-  }
+  constructor() {  }
   ngOnInit(): void {
     
     //throw new Error('Method not implemented.');
@@ -64,11 +57,7 @@ export class CarruselComponent implements OnInit, AfterViewInit {
  
     
   }
-  onAutoplay()
-  {
-    this.mySwiper.autoplay.start();
-  }
-
+ 
   onSlideNext(){
     this.mySwiper.slideNext();
   }
