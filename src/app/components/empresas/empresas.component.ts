@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,12 +25,12 @@ import { Router } from '@angular/router';
 })
 export class EmpresasComponent implements OnInit {
 
+  @Input() empresas:any[];
   departamentos: DepartamentosModel[]=[];
   provincias: ProvinciasModel[]=[];
   distritos: DistritosModel[]=[];
 
   constructor(
-    private firebaseService: FirebaseService,
     private router: Router,
     public config: NgbRatingConfig,
     private _departamentosService:DepartamentosService,
@@ -55,9 +55,9 @@ export class EmpresasComponent implements OnInit {
     this.provincias = this._provinciasService.getProvincias();
     this.distritos = this._distritoService.getDistritos();
 
-    this.firebaseService.getEmpresas().subscribe(resp=>{
+    /* this.firebaseService.getEmpresas().subscribe(resp=>{
       this.collection.data = resp.map((e:any)=>{
-        //this.productos=resp;
+       
       
         return {
           razon_social: e.payload.doc.data().emp_crass,
@@ -76,7 +76,7 @@ export class EmpresasComponent implements OnInit {
     error=>{
       console.error(error)
     }
-    );
+    ); */
     
     /* this.firebaseService.getEmpresas().subscribe(resp=>{
       this.collection.data = resp.map((e:any)=>{

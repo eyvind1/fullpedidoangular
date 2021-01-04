@@ -21,9 +21,9 @@
             <!-- <mat-list>
               <mat-list-item *ngFor="let item of collection.data; let i = index">
                 
-                <img *ngIf="item.logo === ''; else imagenblock" matListAvatar src="../../../assets/images/invoice_logo.png" alt="">
+                <img *ngIf="item.emp_clogo === ''; else imagenblock" matListAvatar src="../../../assets/images/invoice_emp_clogo.png" alt="">
                 <ng-template #imagenblock>
-                  <img matListAvatar src={{item.logo}} alt="">
+                  <img matListAvatar src={{item.emp_clogo}} alt="">
                 </ng-template>
                 <h3 matLine> {{item.razon_social}} </h3>
                 
@@ -50,7 +50,7 @@
           <!-- </ul> -->
 
           <!-- <div class="cases-wrap d-md-flex align-items-center">
-            <div class="img" style="background-image: url(../../../assets/images/invoice_logo.png);"></div>
+            <div class="img" style="background-image: url(../../../assets/images/invoice_emp_clogo.png);"></div>
             <div class="text pl-md-5">
               <span class="cat">Strategy</span>
               <h2>Business activities and care for the environment</h2>
@@ -108,17 +108,17 @@
 
 
           <!-- Lista de Empresas -->
-          <div *ngFor="let item of collection.data ; let i=index " fxLayout="row"  [style.margin-top]="'12px'" fxLayoutAlign="space-around center" >
+          <div *ngFor="let item of this.empresas ; let i=index " fxLayout="row"  [style.margin-top]="'12px'" fxLayoutAlign="space-around center" >
             <mat-card>
               
-              <img *ngIf="item.logo === ''; else imagenblock" matListAvatar src="../../../assets/images/invoice_logo.png" alt="" width="60px">
+              <img *ngIf="item.emp_clogo === ''; else imagenblock" matListAvatar src="../../../assets/images/invoice_logo.png" alt="" width="60px">
               <ng-template #imagenblock>
-                <img matListAvatar src={{item.logo}} alt="" width="60px">
+                <img matListAvatar src={{item.emp_clogo}} alt="" width="60px">
               </ng-template>
             </mat-card>
             
             <mat-card >
-              <div class="mat-body-2"> {{item.nombre_comercial}}</div>
+              <div class="mat-body-2"> {{item.emp_cncomer}}</div>
               <mat-list>
                  <!--  <div matLine *ngIf="item.nombre_comercial !== '-'; else comercialblock">
                     <div>{{item.nombre_comercial}}</div>  
@@ -127,7 +127,7 @@
                     </ng-template>
                   </div> -->
 
-                  <div>{{item.razon_social}}</div> 
+                  <div>{{item.emp_crass}}</div> 
                   <!-- <div *ngIf="item.categoria.cat_cdes !== undefined ; then thenBlock else categoriablock" matLine>
                     <ng-template #thenBlock>
                       {{item.categoria.cat_cdes}}
@@ -137,9 +137,9 @@
                     </ng-template>  
                         
                   </div> -->
-                  <div>{{item.descripcion}}</div>
+                  <div>{{item.aeco_cdesc}}</div>
                   <div matLine>
-                    {{item.departamento}} - {{item.provincia}} - {{item.distrito}}
+                    {{item.emp_cdepa}} - {{item.emp_cprov}} - {{item.emp_cdist}}
                   </div>
                   <div matLine>
                     <ng-template #t let-fill="fill">
@@ -147,7 +147,7 @@
                         <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
                       </span>
                     </ng-template>
-                    <ngb-rating [starTemplate]="t" [rate]="item.calificacion" [readonly]="true" [max]="5"></ngb-rating> 
+                    <ngb-rating [starTemplate]="t" [rate]="item.emp_ncalif" [readonly]="true" [max]="5"></ngb-rating> 
                   </div>
                   <div matLine>
                     <button mat-button (click)="verEmpresa(i)">Ver Productos</button>   
