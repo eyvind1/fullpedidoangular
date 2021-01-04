@@ -4,6 +4,8 @@ import { CategoriasModel } from 'src/app/models/categoria';
 import { CategoriasService } from 'src/app/services/categorias.service';
 import { Swiper } from 'swiper';
 import { FirebaseService } from '../../services/firebase.service';
+import { Autoplay } from 'swiper';
+Swiper.use([Autoplay]);
 
 @Component({
   selector: 'app-carrusel',
@@ -25,6 +27,7 @@ export class CarruselComponent implements OnInit, AfterViewInit {
     
   }
   ngOnInit(): void {
+    
     //throw new Error('Method not implemented.');
     /* this.firebaseService.getArrayPromociones().subscribe(resp=>{
         this.promociones=resp; 
@@ -54,10 +57,11 @@ export class CarruselComponent implements OnInit, AfterViewInit {
       slidesPerView:2,
       loop: true,
       autoplay: {
-        delay: 2000},
+        delay: 2000
+      },
   
-    })
-
+    });
+ 
     
   }
   onAutoplay()
