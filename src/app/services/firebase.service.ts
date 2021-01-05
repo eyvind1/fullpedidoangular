@@ -28,6 +28,9 @@ export class FirebaseService {
   {
     return this.firestore.collection("Gmtc_promocion").valueChanges();
   }
+  getEmpresa(id:any){
+    return this.firestore.collection("Gmtc_empresa").doc(id).get();
+  }
   
   
   

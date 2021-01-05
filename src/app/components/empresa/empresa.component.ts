@@ -10,7 +10,7 @@ import { EmpresasModel } from '../../models/empresas';
 })
 export class EmpresaComponent implements OnInit {
 
-  empresas: any = [];
+  empresa: any = [];
   //public empresas = {};
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -18,23 +18,24 @@ export class EmpresaComponent implements OnInit {
   ) {
     this.activatedRoute.params.subscribe(params=>{
       //console.log(params['id']);
-      this.firebaseService.getArrayEmpresas().subscribe(resp=>{
+      /* this.firebaseService.getArrayEmpresas().subscribe(resp=>{
         this.empresas = resp[params['id']];   
-        //console.log(this.empresas);
-      }
-
-      );
+      } */
+      this.getProductos(params['id']);
+    
       
     });
    }
 
-  
-
   ngOnInit(): void {    
   }
 
-  getnombre(){
-    console.log(this.empresas);
+  getProductos(id:any){
+   this.firebaseService.getEmpresa(id).subscribe(resp=>{
+      //console.log(resp.data());
+      this.empresa = resp.data();
+    });  
+    
   }
 
   

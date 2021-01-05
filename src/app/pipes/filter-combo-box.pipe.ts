@@ -12,7 +12,7 @@ export class FilterComboBoxPipe implements PipeTransform {
     const results = [];
   
     for (const post of value) {
-      if ((post.emp_cdepa.toLowerCase().indexOf(arg.toLowerCase())>-1)) {
+      if ((post.departamento.toLowerCase().indexOf(arg.toLowerCase())>-1)) {
         results.push(post);
       }
       

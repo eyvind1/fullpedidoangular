@@ -27,7 +27,9 @@ import { FilterComboBoxPipe } from '../pipes/filter-combo-box.pipe';
 import { LoadingComponent } from './loading/loading.component';
 import { MatMenuModule } from '@angular/material/menu'
 import { FilterProvinciasPipe } from '../pipes/filter-provincias.pipe';
-
+import { FilterDistritosPipe } from '../pipes/filter-distritos.pipe';
+import {OrderByModule} from 'ng-orderby-pipe';
+import { SortEmpresasPipe } from '../pipes/sort-empresas.pipe';
 /* import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../environments/environment'; */
 
@@ -43,6 +45,8 @@ import { environment } from '../../environments/environment'; */
     FilterComboBoxPipe,
     LoadingComponent,
     FilterProvinciasPipe,
+    FilterDistritosPipe,
+    SortEmpresasPipe
   ],
   exports: [
     HeaderComponent,
@@ -68,6 +72,7 @@ import { environment } from '../../environments/environment'; */
     MatSelectFilterModule,
     FormsModule,
     MatMenuModule,
+    OrderByModule,
    
     
     // AngularFireModule.initializeApp(environment.firebase)

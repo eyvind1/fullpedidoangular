@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filterProvincias'
+  name: 'sortEmpresas'
 })
-export class FilterProvinciasPipe implements PipeTransform {
+export class SortEmpresasPipe implements PipeTransform {
 
   transform(value: any, arg:any):any  {
     if (!arg ) {
@@ -12,7 +12,7 @@ export class FilterProvinciasPipe implements PipeTransform {
     const results = [];
   
     for (const post of value) {
-      if ((post.provincia.toLowerCase().indexOf(arg.toLowerCase())>-1)) {
+      if ((post.productos != undefined)) {
         results.push(post);
       }
       

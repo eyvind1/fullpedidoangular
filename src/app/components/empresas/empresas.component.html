@@ -7,63 +7,13 @@
             <h2 class="mb-4">Nosotros somos los mejores</h2>
           </div>
 
-         
-          <!-- <ul class="list-group"> -->
-  
-            <!-- <li *ngFor="let item of collection.data; let i=index" class="list-group-item">  -->
-            <!-- <li *ngFor="let item of this.productos; let i=index" class="list-group-item"> -->
-              <!-- {{i+1}} &nbsp; {{item.ruc}} &nbsp; {{item.departamento}} &nbsp; {{item.emp_aprod[0].prod_ccod}} &nbsp;
-              <button (click)="verEmpresa(i)" type="button" class="btn btn-primary btn-block">
-                ver más...
-              </button> 
-              
-            </li> --> 
-            <!-- <mat-list>
-              <mat-list-item *ngFor="let item of collection.data; let i = index">
-                
-                <img *ngIf="item.emp_clogo === ''; else imagenblock" matListAvatar src="../../../assets/images/invoice_emp_clogo.png" alt="">
-                <ng-template #imagenblock>
-                  <img matListAvatar src={{item.emp_clogo}} alt="">
-                </ng-template>
-                <h3 matLine> {{item.razon_social}} </h3>
-                
-                <p matLine>
-                  <span> {{item.nombre_comercial}} </span> <br>
-                  <span *ngIf="item.categoria.cat_cdes !== undefined ; then thenBlock else categoriablock"> </span> <br>
-                    <ng-template #thenBlock>
-                      <span>{{item.categoria.cat_cdes}}</span>
-                    </ng-template>
-                    <ng-template #categoriablock>
-                      <span> Sin categoría  </span> <br>
-                    </ng-template> 
-                   
-                  <ngb-rating [rate]="item.calificacion"></ngb-rating> 
-                </p>
-                <div class="example-button-row">
-                  <button (click)="verEmpresa(i)" type="button" class="btn btn-primary btn-block">
-                    Ver Productos
-                  </button> 
-                </div>
-              </mat-list-item>
-            </mat-list> -->
-            
-          <!-- </ul> -->
-
-          <!-- <div class="cases-wrap d-md-flex align-items-center">
-            <div class="img" style="background-image: url(../../../assets/images/invoice_emp_clogo.png);"></div>
-            <div class="text pl-md-5">
-              <span class="cat">Strategy</span>
-              <h2>Business activities and care for the environment</h2>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-              <p><a href="#" class="btn btn-primary">Read more</a></p>
-            </div>
-          </div> -->
+        
 
 
           <!-- combo box departamentos -->
           <div>
             <mat-form-field appearance="fill">
-              <mat-label>Seleccione una Departamento</mat-label>
+              <mat-label>Seleccione un Departamento</mat-label>
               <mat-select [(ngModel)]="departamentoselected" name="departamento" [disableOptionCentering]="true" (selectionChange)="filtrarProvincias()" >
                 <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="departamentoList" (filteredReturn)="filteredListdepartamento =$event"></mat-select-filter>   -->
                 
@@ -73,7 +23,7 @@
               </mat-select>
             </mat-form-field>
             
-            <p>You selected: {{departamentoselected}}</p>
+            <!-- <p>You selected: {{departamentoselected}}</p> -->
           </div>
           <!-- combo box provincias -->
           <div>
@@ -88,12 +38,12 @@
               </mat-select>
             </mat-form-field>
             
-            <p>You selected: {{provinciaselected}}</p>
+            <!-- <p>You selected: {{provinciaselected}}</p> -->
           </div>
           <!-- combo box distritos -->
           <div>
             <mat-form-field appearance="fill">
-              <mat-label>Seleccione una Distrito</mat-label>
+              <mat-label>Seleccione un Distrito</mat-label>
               <mat-select [(ngModel)]="distritoselected" name="distrito" [disableOptionCentering]="true" (selectionChange)="filtrarEmpresasDistritos()">
                 <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="distritoList" (filteredReturn)="filteredListdistrito =$event"></mat-select-filter>   -->
                 
@@ -103,36 +53,38 @@
               </mat-select>
             </mat-form-field>
             
-            <p>You selected: {{distritoselected}}</p>
+            <!-- <p>You selected: {{distritoselected}}</p> -->
           </div>
 
 
           <!-- Lista de Empresas -->
-          <div class="card" style="width: 500px;" *ngFor="let item of this.empresas |filterComboBox:nameDepartamento| filterProvincias:nameDistrito; let i=index ">
+         <!--  -->
+          <div class="card" style="width: auto;" *ngFor="let item of this.collection |sortEmpresas:'a'|  orderBy: 'productos.length':'desc'|filterComboBox:nameDepartamento| filterProvincias:nameProvincia | filterDistritos:nameDistrito  ">
             <div class="row no-gutters">
-                <div class="col-sm-5 my-auto text-center">
+                <div class="col-sm-5 my-auto text-center" >
                 
-                    <img *ngIf="item.emp_clogo === ''; else imagenblock" class="card-img rounded" src="../../../assets/images/invoice_logo.png" alt="">
+                    <img style="width: 150px;" *ngIf="item.emp_clogo?.length < 1; else imagenblock" class="card-img rounded" src="../../../assets/images/invoice_logo.png" alt="">
                     <ng-template #imagenblock>
-                      <img class="card-img rounded" src={{item.emp_clogo}} alt="" >
+                      <img style="width: 150px;" class="card-img rounded" src={{item.emp_clogo}} alt="" >
                     </ng-template> 
                 </div>
                 <div class="col-sm-7">
                     <div class="card-body">
-                        <h5 class="card-title">{{item.emp_cncomer}}</h5>
-                        <h6 class="card-title">{{item.emp_crass}}</h6>
-                        <p class="card-text">{{item.aeco_cdesc}}</p>
-                        <h6 class="card-title">{{item.emp_cdepa}} - {{item.emp_cprov}} - {{item.emp_cdist}}</h6>
+                        <h5 class="card-title">{{item.nombre_comercial}}</h5>
+                        <h6 class="card-title">{{item.razon_social}}</h6>
+                        <p class="card-text">{{item.descripcion | lowercase }}</p>
+                        <h6 class="card-title">{{item.departamento}} - {{item.provincia}} - {{item.distrito}}</h6>
                         <p>
                           <ng-template #t let-fill="fill">
                             <span class="star" [class.full]="fill === 100">
-                              <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
+                              <span class="half" [style.width.%]="fill">&#x2605;</span>&#x2605;
                             </span>
                           </ng-template>
-                          <ngb-rating [starTemplate]="t" [rate]="item.emp_ncalif" [readonly]="true" [max]="5"></ngb-rating> 
+                          <ngb-rating [starTemplate]="t" [rate]="item.calificacion" [readonly]="true" [max]="5"></ngb-rating> 
                         </p>
                         <div matLine>
-                          <button mat-button (click)="verEmpresa(i)">Ver Productos</button>   
+                          <!-- <button mat-button (click)="verEmpresa(i)">Ver Productos</button>    -->
+                          <button class="button" (click)="verEmpresa(item.idFirebase)">Ver Productos</button>
                         </div>
                     </div>
                 </div>
@@ -142,57 +94,4 @@
 
 
 
-         <!--  <div *ngFor="let item of this.empresas ; let i=index " fxLayout="row"  [style.margin-top]="'12px'" fxLayoutAlign="space-around center" >
-            <mat-card>
-              
-              <img *ngIf="item.emp_clogo === ''; else imagenblock" matListAvatar src="../../../assets/images/invoice_logo.png" alt="" width="60px">
-              <ng-template #imagenblock>
-                <img matListAvatar src={{item.emp_clogo}} alt="" width="60px">
-              </ng-template>
-            </mat-card>
-            
-            <mat-card >
-              <div class="mat-body-2"> {{item.emp_cncomer}}</div>
-              <mat-list> -->
-                 <!--  <div matLine *ngIf="item.nombre_comercial !== '-'; else comercialblock">
-                    <div>{{item.nombre_comercial}}</div>  
-                    <ng-template #comercialblock>
-                      <div>Sin nombre comercial</div>
-                    </ng-template>
-                  </div> -->
-
-                  <!-- <div>{{item.emp_crass}}</div>  -->
-                  <!-- <div *ngIf="item.categoria.cat_cdes !== undefined ; then thenBlock else categoriablock" matLine>
-                    <ng-template #thenBlock>
-                      {{item.categoria.cat_cdes}}
-                    </ng-template>
-                    <ng-template #categoriablock>
-                      Sin categoría
-                    </ng-template>  
-                        
-                  </div> -->
-                  <!-- <div>{{item.aeco_cdesc}}</div>
-                  <div matLine>
-                    {{item.emp_cdepa}} - {{item.emp_cprov}} - {{item.emp_cdist}}
-                  </div>
-                  <div matLine>
-                    <ng-template #t let-fill="fill">
-                      <span class="star" [class.full]="fill === 100">
-                        <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
-                      </span>
-                    </ng-template>
-                    <ngb-rating [starTemplate]="t" [rate]="item.emp_ncalif" [readonly]="true" [max]="5"></ngb-rating> 
-                  </div>
-                  <div matLine>
-                    <button mat-button (click)="verEmpresa(i)">Ver Productos</button>   
-                  </div>
-              </mat-list>
-            </mat-card>
-          </div> 
- -->
-        
-  
-    
-
-        
         

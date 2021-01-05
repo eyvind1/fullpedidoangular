@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,7 +23,7 @@ import { Router } from '@angular/router';
   templateUrl: './empresas.component.html',
   styleUrls: ['./empresas.component.css']
 })
-export class EmpresasComponent implements OnInit {
+export class EmpresasComponent implements OnInit, OnChanges {
 
   @Input() empresas:any[];
   departamentos: DepartamentosModel[]=[];
@@ -36,10 +36,16 @@ export class EmpresasComponent implements OnInit {
     private _departamentosService:DepartamentosService,
     private _provinciasService: ProvinciasService,
     private _distritoService: DistritosService,
+    private _firebaseServiceEmpresas: FirebaseService,
+    private firebaseService: FirebaseService,
   ) {
     //config.max = 5.0;
     //config.readonly = true;
    }
+  ngOnChanges(): void {
+    /* this.empresas = this.empresas.filter((data:any)=>(data.emp_aprod != null && data.emp_aprod.length>0));
+    console.log(this.empresas); */
+  }
   nombre: any;
   departamentoselected :any;
   provinciaselected: any;
@@ -53,15 +59,14 @@ export class EmpresasComponent implements OnInit {
   nameProvinciafiltered:any=[];
   nameDistritofiltered:any=[];
   productos : any=[];
-
-  filterPost = 'AREQUIPA';
+  collection : any= [];
   ngOnInit(): void {
     this.departamentos = this._departamentosService.getDepartamentos();
     this.provincias = this._provinciasService.getProvincias();
     this.distritos = this._distritoService.getDistritos();
-
-    /* this.firebaseService.getEmpresas().subscribe(resp=>{
-      this.collection.data = resp.map((e:any)=>{
+    
+     this.firebaseService.getEmpresas().subscribe(resp=>{
+      this.collection = resp.map((e:any)=>{
        
       
         return {
@@ -74,14 +79,16 @@ export class EmpresasComponent implements OnInit {
           descripcion:  e.payload.doc.data().aeco_cdesc,
           departamento: e.payload.doc.data().emp_cdepa,
           provincia: e.payload.doc.data().emp_cprov,
-          distrito: e.payload.doc.data().emp_cdist
+          distrito: e.payload.doc.data().emp_cdist,
+          productos: e.payload.doc.data().emp_aprod ,
+          idFirebase: e.payload.doc.id,
         } 
       })
     },
     error=>{
       console.error(error)
     }
-    ); */
+    ); 
     
     /* this.firebaseService.getEmpresas().subscribe(resp=>{
       this.collection.data = resp.map((e:any)=>{
@@ -103,7 +110,10 @@ export class EmpresasComponent implements OnInit {
     
   }
 
-  verEmpresa(idx:number){
+
+
+  verEmpresa(idx:any){
+    console.log(idx);
     this.router.navigate(['/empresa',idx]);
   }
 
@@ -125,7 +135,7 @@ export class EmpresasComponent implements OnInit {
   filtrarDistritos(){
     this.distritofiltered = this.distritos.filter((data:any)=>(data.id_provincia == this.provinciaselected));
     this.nameProvinciafiltered = this.provincias.filter((data:any)=>(data.id_provincia == this.provinciaselected));
-    this.nameProvincia = this.nameDepartamentofiltered[0].nombre_provincia;
+    this.nameProvincia = this.nameProvinciafiltered[0].nombre_provincia;
   }
 
   filtrarEmpresasDistritos(){

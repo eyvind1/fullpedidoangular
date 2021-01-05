@@ -1,5 +1,5 @@
 <div class="contenedor container">
-    <h1>{{this.empresas.emp_cncomer}} </h1>
+    <h1>{{this.empresa.emp_cncomer}} </h1> 
     <hr>
     <div class="row text-right"></div>
 
@@ -40,9 +40,9 @@
     </h1>
     <div class="row">
         
-        <div class="col-sm-3" *ngFor="let item of this.empresas.emp_aprod">
+        <div class="col-sm-3" *ngFor="let item of this.empresa.emp_aprod">
             <app-productos  [producto]="item" ></app-productos>
-        </div>
+        </div> 
     </div>
     
 </div>
