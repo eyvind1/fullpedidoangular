@@ -18,4 +18,7 @@ export class HeaderComponent implements OnInit {
     this.categorias= this._categoriaService.getCategorias();
   }
 
+  buscarHeroe(termino:string){
+    console.log(termino)
+  }
 }

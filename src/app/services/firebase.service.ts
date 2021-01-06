@@ -8,7 +8,7 @@ import { EmpresasModel } from '../models/empresas';
 })
 export class FirebaseService {
 
-  
+  array:any[];
   constructor(
     private firestore: AngularFirestore
   ) { }
@@ -31,7 +31,22 @@ export class FirebaseService {
   getEmpresa(id:any){
     return this.firestore.collection("Gmtc_empresa").doc(id).get();
   }
-  
+  buscarEmpresas(termino:string):any[]{
+    let empresasArr:any[]=[];
+    
+    termino = termino.toLowerCase();
+    this.firestore.collection("Gmtc_empresa").valueChanges().subscribe(resp=>{
+      this.array = resp;
+    })
+    for(let emp of this.array)
+    {
+      let nombre = emp.emp_cncomer.toLowerCase();
+      if (nombre.indexOf(termino)>=0) {
+        empresasArr.push(emp)
+      } 
+    }
+    return empresasArr;
+  }
   
   
   

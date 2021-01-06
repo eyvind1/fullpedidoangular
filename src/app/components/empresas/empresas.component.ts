@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,19 +17,22 @@ import { DistritosModel } from '../../models/distrito';
 
 import { FirebaseService } from '../../services/firebase.service';
 import { Router } from '@angular/router';
+import { CategoriasModel } from 'src/app/models/categoria';
+import { CategoriasService } from 'src/app/services/categorias.service';
 
 @Component({
   selector: 'app-empresas',
   templateUrl: './empresas.component.html',
   styleUrls: ['./empresas.component.css']
 })
-export class EmpresasComponent implements OnInit, OnChanges {
+export class EmpresasComponent implements OnInit {
 
   @Input() empresas:any[];
+  @Output() sendcategoriaselected: EventEmitter <any>;
   departamentos: DepartamentosModel[]=[];
   provincias: ProvinciasModel[]=[];
   distritos: DistritosModel[]=[];
-
+  categorias: CategoriasModel[]=[];
   constructor(
     private router: Router,
     public config: NgbRatingConfig,
@@ -38,18 +41,18 @@ export class EmpresasComponent implements OnInit, OnChanges {
     private _distritoService: DistritosService,
     private _firebaseServiceEmpresas: FirebaseService,
     private firebaseService: FirebaseService,
+    private _categoriaService: CategoriasService,
   ) {
+      this.sendcategoriaselected = new EventEmitter();
     //config.max = 5.0;
     //config.readonly = true;
    }
-  ngOnChanges(): void {
-    /* this.empresas = this.empresas.filter((data:any)=>(data.emp_aprod != null && data.emp_aprod.length>0));
-    console.log(this.empresas); */
-  }
+ 
   nombre: any;
   departamentoselected :any;
   provinciaselected: any;
   distritoselected: any;
+  categoriaselected:any ;
   nameDepartamento: string;
   nameProvincia: string;
   nameDistrito: string;
@@ -58,17 +61,21 @@ export class EmpresasComponent implements OnInit, OnChanges {
   nameDepartamentofiltered:any=[];
   nameProvinciafiltered:any=[];
   nameDistritofiltered:any=[];
+  codigoCategoriafiltered: any=[];
+  codigoCategoriafiltered2: any=[];
   productos : any=[];
   collection : any= [];
   ngOnInit(): void {
+    
+
     this.departamentos = this._departamentosService.getDepartamentos();
     this.provincias = this._provinciasService.getProvincias();
     this.distritos = this._distritoService.getDistritos();
-    
-     this.firebaseService.getEmpresas().subscribe(resp=>{
-      this.collection = resp.map((e:any)=>{
+    this.categorias = this._categoriaService.getCategorias();
+    this.firebaseService.getEmpresas().subscribe(resp=>{
+    this.collection = resp.map((e:any)=>{
        
-      
+      //console.log(resp);
         return {
           razon_social: e.payload.doc.data().emp_crass,
           nombre_comercial: e.payload.doc.data().emp_cncomer,
@@ -113,7 +120,7 @@ export class EmpresasComponent implements OnInit, OnChanges {
 
 
   verEmpresa(idx:any){
-    console.log(idx);
+    //console.log(idx);
     this.router.navigate(['/empresa',idx]);
   }
 
@@ -142,7 +149,15 @@ export class EmpresasComponent implements OnInit, OnChanges {
     this.nameDistritofiltered = this.distritos.filter((data:any)=>(data.id_distrito == this.distritoselected));
     this.nameDistrito = this.nameDistritofiltered[0].nombre_distrito;
   }
-
+  filtrarCategorias(){
+    this.sendcategoriaselected.emit(this.categoriaselected);
+    //this.codigoCategoriafiltered = this.collection.filter((data:any)=>(data.categoria != undefined));
+  
+    //this.codigoCategoriafiltered = this.codigoCategoriafiltered.filter((data:any)=>(data.categoria.cat_ncod == this.categoriaselected)); */
+    /* this.collection = this.codigoCategoriafiltered.filter((data:any)=>(data.categoria.cat_ncod == this.categoriaselected));
+    console.log(this.collection); */
+  
+  }
   //getNamefromId(id:number):string{
     //this.namefiltered = this.departamentos.filter((data:any)=>(data.id_departamento == id));
     //1this.nameDepartamento = this.namefiltered[0].nombre_departamento;

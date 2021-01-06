@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit,Input, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
 import { NgbCarouselConfig, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { CategoriasModel } from 'src/app/models/categoria';
 import { CategoriasService } from 'src/app/services/categorias.service';
@@ -12,18 +12,26 @@ Swiper.use([Autoplay]);
   templateUrl: './carrusel.component.html',
   styleUrls: ['./carrusel.component.css']
 })
-export class CarruselComponent implements OnInit, AfterViewInit {
+export class CarruselComponent implements OnInit, AfterViewInit,OnChanges{
   
   @Input() promociones:any[];
+  @Input() categoriaselected:any =1 ;
   public mySwiper: Swiper;
 
   constructor() {  }
+  ngOnChanges(changes: SimpleChanges): void {
+    /* this.promociones_img= this.promociones.filter((data:any)=>(data.emp_cat == this.categoriaselected));
+    console.log(this.promociones_img);
+    console.log(this.categoriaselected); */
+  }
+  
+  
   ngOnInit(): void {
-    
     
   }
  
   promociones_img : any=[];
+  idcategoria:any;
   ngAfterViewInit():void {
     
    

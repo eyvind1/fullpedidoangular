@@ -30,6 +30,9 @@ import { FilterProvinciasPipe } from '../pipes/filter-provincias.pipe';
 import { FilterDistritosPipe } from '../pipes/filter-distritos.pipe';
 import {OrderByModule} from 'ng-orderby-pipe';
 import { SortEmpresasPipe } from '../pipes/sort-empresas.pipe';
+import { BuscadorComponent } from './buscador/buscador.component';
+import { FilterCategoriasPipe } from '../pipes/filter-categorias.pipe';
+import { FilterCategoriasCarruselPipe } from '../pipes/filter-categorias-carrusel.pipe';
 /* import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../environments/environment'; */
 
@@ -46,7 +49,10 @@ import { environment } from '../../environments/environment'; */
     LoadingComponent,
     FilterProvinciasPipe,
     FilterDistritosPipe,
-    SortEmpresasPipe
+    SortEmpresasPipe,
+    BuscadorComponent,
+    FilterCategoriasPipe,
+    FilterCategoriasCarruselPipe,
   ],
   exports: [
     HeaderComponent,

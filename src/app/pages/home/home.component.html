@@ -3,7 +3,7 @@
 </div> -->
 <div class="row" *ngIf="promociones.length > 0">
   <div class="col">
-    <app-carrusel [promociones]="promociones"></app-carrusel>
+    <app-carrusel  [categoriaselected]="categoriaselected" [promociones]="promociones"></app-carrusel>
   </div>
   
 </div>
@@ -12,7 +12,7 @@
   <div class="container">
     <div class="row d-flex no-gutters">
       <div class="col-md-6 pl-md-5 py-md-5">
-        <app-empresas [empresas]="empresas"></app-empresas>
+        <app-empresas (sendcategoriaselected)=" changeCategoria($event)" [empresas]="empresas"></app-empresas>
       </div>
       
       <div class="col-md-6 pl-md-5 py-md-5">

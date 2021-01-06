@@ -15,6 +15,8 @@ import { AngularFireModule } from '@angular/fire';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DepartamentosService } from './services/departamentos.service';
 import { NoImagePipe } from './pipes/no-image.pipe';
+import { FilterCategoriasPipe } from './pipes/filter-categorias.pipe';
+import { FilterCategoriasCarruselPipe } from './pipes/filter-categorias-carrusel.pipe';
 
 
 //import { FilterDistritosPipe } from './pipes/filter-distritos.pipe';
@@ -30,6 +32,8 @@ import { NoImagePipe } from './pipes/no-image.pipe';
     HomeComponent,
     AboutComponent,
     NoImagePipe,
+    //FilterCategoriasCarruselPipe,
+    //FilterCategoriasPipe,
     //SortEmpresasPipe,
     //FilterDistritosPipe,
     //FilterProvinciasPipe,
