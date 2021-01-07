@@ -23,11 +23,10 @@
   </div> -->
 
   <!-- Slider main container -->
-<div class="swiper-container" style="margin-top: 90px;">
+<div class="swiper-container" style="margin-top: 90px;"> 
   <!-- Additional required wrapper -->
-  <div class="swiper-wrapper">
+  <div class="swiper-wrapper"> 
       <!-- Slides -->
-      <!-- <div *ngFor="let item of this.promociones" class="swiper-slide" [ngClass]="{'background-size': 'cover','background-image':'url('+item.prom_tipo.tipo_cimagen+')'}"> -->
       <div *ngFor="let item of this.promociones" class="swiper-slide text-center" > 
         <img class="img-thumbnail" [src]="item.prom_tipo.tipo_cimagen" alt="Random first slide">
         <div class="categoria-descripcion" >
@@ -35,12 +34,39 @@
         </div>
       </div>
       
-  </div>
+  </div> 
   <!-- If we need pagination -->
-  <div class="swiper-pagination"></div>
+  <div class="swiper-pagination"></div> 
 
   <!-- If we need navigation buttons -->
-  <div (click)="onSlidePrev()" class="swiper-button-prev"></div>
+   <div (click)="onSlidePrev()" class="swiper-button-prev"></div>
   <div (click)="onSlideNext()" class="swiper-button-next"></div>
 
-</div>
+</div> 
+
+
+<!-- <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" >
+  <ol class="carousel-indicators">
+      <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
+      <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
+      <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner" >
+      <div class="carousel-item active" style="height: 80vh;" *ngFor="let item of this.promociones" >
+          <img class="d-block w-100" [src]="item.prom_tipo.tipo_cimagen" alt="Random first slide">
+          <div class="carousel-caption d-none d-md-block">
+              <h5>{{item.emp_cate.cat_cdes}}</h5>
+              
+          </div>
+      </div>
+     
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+  </a>
+</div> -->
