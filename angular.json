@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "fullpedidoangular"
+  "defaultProject": "fullpedidoangular",
+  "cli": {
+    "analytics": false
+  }
 }
