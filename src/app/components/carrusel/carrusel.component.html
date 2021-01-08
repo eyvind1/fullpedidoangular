@@ -1,33 +1,22 @@
 <!-- carrusel -->
 
-<div class="carrusel-img">
+<!-- div class="carrusel-img">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
             <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active" data-interval="5000" style="max-height: 60vh;">
-                <img src="../../../assets/images/image_1.jpg" class="d-block w-100" alt="..." style="object-fit: cover;">
+        </ol> 
+        <div class="carousel-inner" >
+            <div  class="carousel-item active" data-interval="5000" style="max-height: 60vh;" >
+                <div *ngFor="let item of this.promociones">
+                    <img  [src]="item.prom_tipo.tipo_cimagen" class="d-block w-100" alt="..." style="object-fit: cover;">
+                </div>
+                
 
                 <div class="carousel-caption  d-md-block">
                     <h5>First slide label</h5>
                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </div>
-            </div>
-            <div class="carousel-item" data-interval="5000" style="max-height: 60vh;">
-                <img src="../../../assets/images/image_2.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption  d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-            <div class="carousel-item" data-interval="5000" style="max-height: 60vh;">
-                <img src="../../../assets/images/image_3.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption  d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                 </div>
             </div>
         </div>
@@ -40,4 +29,40 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-</div>
+</div> -->
+
+
+<!-- <ngb-carousel  >
+    <ng-template ngbSlide *ngFor="let item of this.promociones">
+      <div class="picsum-img-wrapper">
+        <img [src]="item.prom_tipo.tipo_cimagen" class="d-block w-100" alt="..." style="object-fit: cover;" alt="Random first slide">
+      </div>
+      <div class="carousel-caption">
+        <h3>First slide label</h3>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </ng-template>
+</ngb-carousel> -->
+
+ <!-- Slider main container -->
+ <div class="swiper-container">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <!-- <div *ngFor="let item of this.promociones" class="swiper-slide" [ngClass]="{'background-size': 'cover','background-image':'url('+item.prom_tipo.tipo_cimagen+')'}"> -->
+        <div *ngFor="let item of this.promociones" class="swiper-slide text-center" data-swiper-autoplay="2000"> 
+          <img class="img-thumbnail" [src]="item.prom_tipo.tipo_cimagen" alt="Random first slide">
+          <div class="categoria-descripcion">
+            <h3 style="color: white;">{{item.emp_cate.cat_cdes}}</h3>
+          </div>
+        </div>
+  
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+  
+    <!-- If we need navigation buttons -->
+    <div (click)="onSlidePrev()" class="swiper-button-prev"></div>
+    <div (click)="onSlideNext()" class="swiper-button-next"></div>
+  
+  </div>

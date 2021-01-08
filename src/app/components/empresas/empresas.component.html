@@ -78,12 +78,12 @@
 
 
 <!-- Lista de Empresas -->
-<div class="card mb-3" *ngFor="let item of this.collection |sortEmpresas:'a'|  orderBy: 'productos.length':'desc'|filterCategorias:categoriaselected|filterComboBox:nameDepartamento| filterProvincias:nameProvincia | filterDistritos:nameDistrito  ">
+<!-- <div class="card mb-3" *ngFor="let item of this.collection |sortEmpresas:'a'|  orderBy: 'productos.length':'desc'|filterCategorias:categoriaselected|filterComboBox:nameDepartamento| filterProvincias:nameProvincia | filterDistritos:nameDistrito  ">
     <div class="row g-0">
         <div class="col-md-4">
-            <img style="max-width: 100%;" *ngIf="item.emp_clogo?.length < 1; else imagenblock" src="../../../assets/images/invoice_logo.png" alt="">
+            <img style="max-width: 100%;" *ngIf="item.logo?.length < 1; else imagenblock" src="../../../assets/images/invoice_logo.png" alt="">
             <ng-template #imagenblock>
-                <img style="max-width: 100%;" src={{item.emp_clogo}} alt="">
+                <img style="max-width: 100%;" src={{item.logo}} alt="">
             </ng-template>
         </div>
         <div class=" col-md-8 ">
@@ -100,14 +100,14 @@
                     </ng-template>
                     <ngb-rating [starTemplate]="t" [rate]="item.calificacion" [readonly]="true" [max]="5"></ngb-rating>
                 </p>
-                <div matLine>
+                <div matLine> -->
                     <!-- <button mat-button (click)="verEmpresa(i)">Ver Productos</button>    -->
-                    <button type="button" class="btn btn-success" (click)="verEmpresa(item.idFirebase)">Ver Productos</button>
+          <!--           <button type="button" class="btn btn-success" (click)="verEmpresa(item.idFirebase)">Ver Productos</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- <div class="card" style="width: auto;" *ngFor="let item of this.collection |sortEmpresas:'a'|  orderBy: 'productos.length':'desc'|filterCategorias:categoriaselected|filterComboBox:nameDepartamento| filterProvincias:nameProvincia | filterDistritos:nameDistrito  ">
             <div class="row no-gutters">
@@ -149,48 +149,32 @@
 <!-- cartas -->
 
 
-<div class="card mb-3">
+<div class="card mb-3" *ngFor="let item of this.collection |sortEmpresas:'a'|  orderBy: 'productos.length':'desc'|filterCategorias:categoriaselected|filterComboBox:nameDepartamento| filterProvincias:nameProvincia | filterDistritos:nameDistrito " >
     <div class="row no-gutters">
         <div class="col-md-4 contenedor-img">
-            <img src="img/3.jfif" class="card-img" alt="...">
+            <img class="card-img" alt="..." *ngIf="item.logo?.length < 1; else imagenblock" src="../../../assets/images/invoice_logo.png" alt="">
+            <ng-template #imagenblock>
+                <img class="card-img" alt="..." src={{item.logo}} alt="">
+            </ng-template>
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-
-                <button type="button" class="btn btn-success">Ver Productos</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="card mb-3">
-    <div class="row no-gutters">
-        <div class="col-md-4 contenedor-img">
-            <img src="img/2.jfif" class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <button type="button" class="btn btn-success">Ver Productos</button>
+                <h5 class="card-title">{{item.nombre_comercial}}</h5>
+                <h6 class="card-title">{{item.razon_social}}</h6>
+                <p class="card-text ">{{item.descripcion | lowercase }}</p>
+                <h6 class="card-title">{{item.departamento}} - {{item.provincia}} - {{item.distrito}}</h6>
+                <p>
+                    <ng-template #t let-fill="fill">
+                        <span class="star" [class.full]="fill === 100">
+                              <span class="half" [style.width.%]="fill">&#x2605;</span>&#x2605;
+                        </span>
+                    </ng-template>
+                    <ngb-rating [starTemplate]="t" [rate]="item.calificacion" [readonly]="true" [max]="5"></ngb-rating>
+                </p>
+                <button type="button" class="btn btn-success" (click)="verEmpresa(item.idFirebase)">Ver Productos</button>
             </div>
         </div>
     </div>
 </div>
 
-<div class="card mb-3">
-    <div class="row no-gutters">
-        <div class="col-md-4 contenedor-img">
-            <img src="../../../assets/images/image_5.jpg" class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <button type="button" class="btn btn-success">Ver Productos</button>
-            </div>
-        </div>
-    </div>
 
-</div>
