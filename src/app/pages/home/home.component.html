@@ -2,26 +2,26 @@
   <app-loading *ngIf="loading"></app-loading>
 </div> -->
 <div class="row" *ngIf="promociones.length > 0">
-  <div class="col">
-    <app-carrusel  [categoriaselected]="categoriaselected" [promociones]="promociones"></app-carrusel>
-  </div>
-  
+    <div class="col">
+        <app-carrusel [categoriaselected]="categoriaselected" [promociones]="promociones"></app-carrusel>
+    </div>
+
 </div>
 
-<section class="ftco-section ftco-no-pt bg-light">
-  <div class="container">
-    <div class="row d-flex no-gutters">
-      <div class="col-md-6 pl-md-5 py-md-5">
+
+<div class="container">
+
+    <div class="productos">
         <app-empresas (sendcategoriaselected)=" changeCategoria($event)" [empresas]="empresas"></app-empresas>
-      </div>
-      
-      <div class="col-md-6 pl-md-5 py-md-5">
-        <app-promociones [promociones]="promociones"></app-promociones>
-      </div>
-      
-      
 
     </div>
-    
-  </div>
-</section>
+
+
+    <div class="img-lateral">
+        <app-promociones [promociones]="promociones"></app-promociones>
+    </div>
+
+
+
+
+</div>

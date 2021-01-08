@@ -1,4 +1,4 @@
-.imagen-grande{
+/* .imagen-grande{
     width: 100%;
     height: auto;
 }
@@ -8,39 +8,92 @@
     display: inline-block;
     font-size: 5px;
     width: 200px;
-  }
+  } */
 
-
-  .star {
+.star {
     position: relative;
     display: inline-block;
     font-size: 2rem;
     color: #d3d3d3;
-  }
-  .full {
+}
+
+.full {
     color: #f39c12;
-  }
-  .half {
+}
+
+.half {
     position: absolute;
     display: inline-block;
     overflow: hidden;
     color: #f39c12;
-  }
-
-  .button {
-  background-color: green;
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  font-size: 16px;
-  margin: 4px 2px;
-  opacity: 0.6;
-  transition: 0.3s;
-  display: inline-block;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 15px;
 }
 
-.button:hover {opacity: 1}
+
+/* .button {
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.button:hover {
+    opacity: 1
+} */
+
+
+/* estilos de empresas segunda version */
+
+
+/* estilos de los titlos de los combo box */
+
+.titulo-categoria {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* estilos de los botones de los filtros por lugares */
+
+.filtro-lugar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+mat-label {
+    color: rgb(7, 143, 30);
+}
+
+mat-option:hover {
+    color: rgb(7, 143, 30);
+}
+
+
+/* estilos botones del filtro por lugar */
+
+
+/* Estilos del contenedor de la imegenes de las empresas */
+
+.contenedor-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-img {
+    width: 80%;
+    height: 80%;
+}
+
+
+/* estilo de la imagen lateral derecha donde apareceran las promociones */

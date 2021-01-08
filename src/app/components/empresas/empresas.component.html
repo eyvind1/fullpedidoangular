@@ -1,113 +1,115 @@
+<div class="heading-section  pt-md-5">
 
+    <h2 class="mb-4 titulo-categoria"> <b>CATEGORÍAS</b> </h2>
+</div>
 
-  
-      <div class="heading-section pl-md-4 pt-md-5">
-        <span class="subheading"></span>
-        <h2 class="mb-4">Nuestras Categorías</h2>
-      </div>
-
-      <div>
-        <mat-form-field appearance="fill">
-          <mat-label>Seleccione una Categoría</mat-label>
-          <mat-select [(ngModel)]="categoriaselected" name="categoria" [disableOptionCentering]="true" (selectionChange)="filtrarCategorias()">
+<div>
+    <mat-form-field appearance="legacy">
+        <mat-label> <b>Seleccione Categoría</b> </mat-label>
+        <mat-select [(ngModel)]="categoriaselected" name="categoria" [disableOptionCentering]="true" (selectionChange)="filtrarCategorias()">
             <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="departamentoList" (filteredReturn)="filteredListdepartamento =$event"></mat-select-filter>   -->
-            
+
             <mat-option *ngFor="let item of this.categorias" [value]="item.cat_ncod">
                 {{item.cat_cdes}}
             </mat-option>
-          </mat-select>
-        </mat-form-field>
+        </mat-select>
+    </mat-form-field>
 
-      </div>
+</div>
 
-          <div class="heading-section pl-md-4 pt-md-5">
-            <span class="subheading">Empresas Afiliadas</span>
-            <h2 class="mb-4">Nosotros somos los mejores</h2>
-          </div>
-
-        
+<div>
+    <!-- <span class="subheading">Empresas Afiliadas</span> -->
+    <h2 class="mb-4"> <b> Empresas Afiliadas</b></h2>
+</div>
 
 
-          <!-- combo box departamentos -->
-          <div>
-            <mat-form-field appearance="fill">
-              <mat-label>Seleccione un Departamento</mat-label>
-              <mat-select [(ngModel)]="departamentoselected" name="departamento" [disableOptionCentering]="true" (selectionChange)="filtrarProvincias()" >
+
+
+<!-- combo box departamentos -->
+<div class="filtro-lugar">
+
+    <div>
+        <mat-form-field class="btn-filtro" appearance="legacy">
+            <mat-label> <b>Departamento</b> </mat-label>
+            <mat-select class="btn-filtro1" [(ngModel)]="departamentoselected" name="departamento" [disableOptionCentering]="true" (selectionChange)="filtrarProvincias()">
                 <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="departamentoList" (filteredReturn)="filteredListdepartamento =$event"></mat-select-filter>   -->
-                
+
                 <mat-option *ngFor="let item of this.departamentos" [value]="item.id_departamento">
                     {{item.nombre_departamento}}
                 </mat-option>
-              </mat-select>
-            </mat-form-field>
-            
-            <!-- <p>You selected: {{departamentoselected}}</p> -->
-          </div>
-          <!-- combo box provincias -->
-          <div>
-            <mat-form-field appearance="fill">
-              <mat-label>Seleccione una Provincia</mat-label>
-              <mat-select [(ngModel)]="provinciaselected" name="provincia" [disableOptionCentering]="true" (selectionChange)="filtrarDistritos()" >
+            </mat-select>
+        </mat-form-field>
+
+        <!-- <p>You selected: {{departamentoselected}}</p> -->
+    </div>
+    <!-- combo box provincias -->
+    <div>
+        <mat-form-field appearance="legacy">
+            <mat-label><b>Provincia</b></mat-label>
+            <mat-select [(ngModel)]="provinciaselected" name="provincia" [disableOptionCentering]="true" (selectionChange)="filtrarDistritos()">
                 <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="provinciaList" (filteredReturn)="filteredListprovincia =$event"></mat-select-filter>   -->
-                
+
                 <mat-option *ngFor="let item of provinciafiltered" [value]="item.id_provincia">
                     {{item.nombre_provincia}}
                 </mat-option>
-              </mat-select>
-            </mat-form-field>
-            
-            <!-- <p>You selected: {{provinciaselected}}</p> -->
-          </div>
-          <!-- combo box distritos -->
-          <div>
-            <mat-form-field appearance="fill">
-              <mat-label>Seleccione un Distrito</mat-label>
-              <mat-select [(ngModel)]="distritoselected" name="distrito" [disableOptionCentering]="true" (selectionChange)="filtrarEmpresasDistritos()">
+            </mat-select>
+        </mat-form-field>
+
+        <!-- <p>You selected: {{provinciaselected}}</p> -->
+    </div>
+    <!-- combo box distritos -->
+    <div>
+        <mat-form-field appearance="legacy">
+            <mat-label> <b>Distrito</b></mat-label>
+            <mat-select [(ngModel)]="distritoselected" name="distrito" [disableOptionCentering]="true" (selectionChange)="filtrarEmpresasDistritos()">
                 <!-- <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="distritoList" (filteredReturn)="filteredListdistrito =$event"></mat-select-filter>   -->
-                
+
                 <mat-option *ngFor="let item of distritofiltered" [value]="item.id_distrito">
                     {{item.nombre_distrito}}
                 </mat-option>
-              </mat-select>
-            </mat-form-field>
-            
-            <!-- <p>You selected: {{distritoselected}}</p> -->
-          </div>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- <p>You selected: {{distritoselected}}</p> -->
+    </div>
+
+</div>
 
 
-          <!-- Lista de Empresas -->
-          <div class="card mb-3" *ngFor="let item of this.collection |sortEmpresas:'a'|  orderBy: 'productos.length':'desc'|filterCategorias:categoriaselected|filterComboBox:nameDepartamento| filterProvincias:nameProvincia | filterDistritos:nameDistrito  ">
-            <div class="row g-0">
-                <div class="col-md-4">
-                  <img style="max-width: 100%;" *ngIf="item.emp_clogo?.length < 1; else imagenblock"  src="../../../assets/images/invoice_logo.png" alt="">
-                  <ng-template #imagenblock>
-                    <img style="max-width: 100%;" src={{item.emp_clogo}} alt="" >
-                  </ng-template> 
-                </div>
-                <div class=" col-md-8 ">
-                    <div class="card-body ">
-                        <h5 class="card-title ">{{item.nombre_comercial}}</h5>
-                        <h6 class="card-title">{{item.razon_social}}</h6>
-                        <p class="card-text ">{{item.descripcion | lowercase }}</p>
-                        <h6 class="card-title">{{item.departamento}} - {{item.provincia}} - {{item.distrito}}</h6>
-                        <p>
-                          <ng-template #t let-fill="fill">
-                            <span class="star" [class.full]="fill === 100">
+
+<!-- Lista de Empresas -->
+<div class="card mb-3" *ngFor="let item of this.collection |sortEmpresas:'a'|  orderBy: 'productos.length':'desc'|filterCategorias:categoriaselected|filterComboBox:nameDepartamento| filterProvincias:nameProvincia | filterDistritos:nameDistrito  ">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img style="max-width: 100%;" *ngIf="item.emp_clogo?.length < 1; else imagenblock" src="../../../assets/images/invoice_logo.png" alt="">
+            <ng-template #imagenblock>
+                <img style="max-width: 100%;" src={{item.emp_clogo}} alt="">
+            </ng-template>
+        </div>
+        <div class=" col-md-8 ">
+            <div class="card-body ">
+                <h5 class="card-title ">{{item.nombre_comercial}}</h5>
+                <h6 class="card-title">{{item.razon_social}}</h6>
+                <p class="card-text ">{{item.descripcion | lowercase }}</p>
+                <h6 class="card-title">{{item.departamento}} - {{item.provincia}} - {{item.distrito}}</h6>
+                <p>
+                    <ng-template #t let-fill="fill">
+                        <span class="star" [class.full]="fill === 100">
                               <span class="half" [style.width.%]="fill">&#x2605;</span>&#x2605;
-                            </span>
-                          </ng-template>
-                          <ngb-rating [starTemplate]="t" [rate]="item.calificacion" [readonly]="true" [max]="5"></ngb-rating> 
-                        </p>
-                        <div matLine>
-                          <!-- <button mat-button (click)="verEmpresa(i)">Ver Productos</button>    -->
-                          <button type="button" class="btn btn-success" (click)="verEmpresa(item.idFirebase)">Ver Productos</button>
-                        </div>
-                    </div>
+                        </span>
+                    </ng-template>
+                    <ngb-rating [starTemplate]="t" [rate]="item.calificacion" [readonly]="true" [max]="5"></ngb-rating>
+                </p>
+                <div matLine>
+                    <!-- <button mat-button (click)="verEmpresa(i)">Ver Productos</button>    -->
+                    <button type="button" class="btn btn-success" (click)="verEmpresa(item.idFirebase)">Ver Productos</button>
                 </div>
             </div>
         </div>
-         
-          <!-- <div class="card" style="width: auto;" *ngFor="let item of this.collection |sortEmpresas:'a'|  orderBy: 'productos.length':'desc'|filterCategorias:categoriaselected|filterComboBox:nameDepartamento| filterProvincias:nameProvincia | filterDistritos:nameDistrito  ">
+    </div>
+</div>
+
+<!-- <div class="card" style="width: auto;" *ngFor="let item of this.collection |sortEmpresas:'a'|  orderBy: 'productos.length':'desc'|filterCategorias:categoriaselected|filterComboBox:nameDepartamento| filterProvincias:nameProvincia | filterDistritos:nameDistrito  ">
             <div class="row no-gutters">
                 <div class="col-sm-5 my-auto text-center" >
                 
@@ -139,6 +141,56 @@
         </div> -->
 
 
-        
 
-        
+
+
+<!-- empresas segunda version -->
+
+<!-- cartas -->
+
+
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-4 contenedor-img">
+            <img src="img/3.jfif" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+
+                <button type="button" class="btn btn-success">Ver Productos</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-4 contenedor-img">
+            <img src="img/2.jfif" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <button type="button" class="btn btn-success">Ver Productos</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-4 contenedor-img">
+            <img src="../../../assets/images/image_5.jpg" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <button type="button" class="btn btn-success">Ver Productos</button>
+            </div>
+        </div>
+    </div>
+
+</div>
